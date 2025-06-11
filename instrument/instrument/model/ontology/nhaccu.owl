@@ -1,0 +1,3248 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://nhaccudantoc"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://nhaccudantoc">
+    <Prefix name="" IRI="http://nhaccudantoc/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Ca_huế"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ca_trù"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chầu_văn"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cải_lương"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Diễn_tấu_khèn"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hát_chèo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hát_sắc_bùa"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hát_then"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hát_trống_quân"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hát_xẩm"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hòa_tấu"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lý"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lễ_hội_cồng_chiêng"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nhã_nhạc_cung_đình_huế"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nhạc_tuồng"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#bộ_phận"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#dân_tộc"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#khu_vực"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#nhạc_cụ"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Đờn_ca_tài_tử_Nam_Bộ"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#có_URL_là"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#có_số_dây_là"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#có_tác_giả_là"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#có_tên_là"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ba_na"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bầu_vang"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bầu_đàn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bắc_Trung_Bộ"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bộ_phận_lên_dây"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ca_Huế_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ca_Huế_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ca_Huế_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ca_trù_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ca_trù_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ca_trù_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Chầu_văn_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Chầu_văn_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Chầu_văn_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cơ_Ho"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cải_lương_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cần_đàn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cầu_đàn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cọc_gỗ"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cồng_chiêng_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cồng_chiêng_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cồng_chiêng_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dao"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Duyên_hải_Nam_Trung_Bộ"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dân_tộc_Việt_Nam"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dây_mây"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dây_đàn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dùi_gõ"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Gia_rai"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Giáy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#H_mông"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_chèo_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_chèo_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_chèo_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_sắc_bùa_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_sắc_bùa_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_sắc_bùa_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_then_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_then_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_then_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_trống_quân_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_trống_quân_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_trống_quân_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_xẩm_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_xẩm_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hát_xẩm_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hộp_đàn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Khmer"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Kinh"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Lý_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Lý_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Lý_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#M_nông"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Móng_gảy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mông"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mường"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mạ"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mặt_đàn_sến"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mặt_đàn_tranh"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mặt_đàn_tính"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mặt_đàn_tỳ_bà"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ngựa_đàn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nhạc_cung_đình_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nhạc_cung_đình_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nhạc_cung_đình_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nùng"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Phiến_đá"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Phím_gảy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Que_gãy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Thành_đàn_tranh"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Thái"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Thân_khèn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Thân_đàn_bầu"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Thân_đàn_cò"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Thân_đàn_tỳ_bà"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Thùng_trống"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Thùng_đàn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Thủ_đàn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Trung_du_miền_núi_phía_Bắc"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Trục_đàn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tuồng_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tuồng_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tuồng_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tày"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tây_Nguyên"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Xơ_Đăng"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#các_ống_tre"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#guitar"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#khèn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#trống_quân"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ê_đê"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Đáy_đàn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Đông_Nam_Bộ"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Đầu_đàn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Đồng"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Đồng_bằng_sông_Cửu_Long"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Đồng_bằng_sông_Hồng"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#đàn_bầu"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#đàn_cò"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#đàn_sến"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#đàn_tranh"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#đàn_tính"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#đàn_đá"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#đàn_đáy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#đờn_ca_tài_tử_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ống_khèn"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Ca_huế"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ca_trù"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chầu_văn"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cải_lương"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Diễn_tấu_khèn"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hát_chèo"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hát_sắc_bùa"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hát_then"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hát_trống_quân"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hát_xẩm"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hòa_tấu"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lý"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lễ_hội_cồng_chiêng"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nhã_nhạc_cung_đình_huế"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Nhạc_tuồng"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Đờn_ca_tài_tử_Nam_Bộ"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Ba_na"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Bầu_vang"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Bầu_đàn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#khu_vực"/>
+        <NamedIndividual IRI="#Bắc_Trung_Bộ"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Bộ_phận_lên_dây"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Ca_huế"/>
+        <NamedIndividual IRI="#Ca_Huế_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Ca_huế"/>
+        <NamedIndividual IRI="#Ca_Huế_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Ca_huế"/>
+        <NamedIndividual IRI="#Ca_Huế_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Ca_trù"/>
+        <NamedIndividual IRI="#Ca_trù_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Ca_trù"/>
+        <NamedIndividual IRI="#Ca_trù_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Ca_trù"/>
+        <NamedIndividual IRI="#Ca_trù_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Chầu_văn"/>
+        <NamedIndividual IRI="#Chầu_văn_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Chầu_văn"/>
+        <NamedIndividual IRI="#Chầu_văn_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Chầu_văn"/>
+        <NamedIndividual IRI="#Chầu_văn_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Cơ_Ho"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Cải_lương"/>
+        <NamedIndividual IRI="#Cải_lương_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Cải_lương"/>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Cải_lương"/>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Cần_đàn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Cầu_đàn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Cọc_gỗ"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Lễ_hội_cồng_chiêng"/>
+        <NamedIndividual IRI="#Cồng_chiêng_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Lễ_hội_cồng_chiêng"/>
+        <NamedIndividual IRI="#Cồng_chiêng_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Lễ_hội_cồng_chiêng"/>
+        <NamedIndividual IRI="#Cồng_chiêng_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Dao"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Diễn_tấu_khèn"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Diễn_tấu_khèn"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Diễn_tấu_khèn"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#khu_vực"/>
+        <NamedIndividual IRI="#Duyên_hải_Nam_Trung_Bộ"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Dân_tộc_Việt_Nam"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Dây_mây"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Dây_đàn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Dùi_gõ"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Gia_rai"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Giáy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#H_mông"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_chèo"/>
+        <NamedIndividual IRI="#Hát_chèo_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_chèo"/>
+        <NamedIndividual IRI="#Hát_chèo_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_chèo"/>
+        <NamedIndividual IRI="#Hát_chèo_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_sắc_bùa"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_sắc_bùa"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_sắc_bùa"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_then"/>
+        <NamedIndividual IRI="#Hát_then_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_then"/>
+        <NamedIndividual IRI="#Hát_then_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_then"/>
+        <NamedIndividual IRI="#Hát_then_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_trống_quân"/>
+        <NamedIndividual IRI="#Hát_trống_quân_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_trống_quân"/>
+        <NamedIndividual IRI="#Hát_trống_quân_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_trống_quân"/>
+        <NamedIndividual IRI="#Hát_trống_quân_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_xẩm"/>
+        <NamedIndividual IRI="#Hát_xẩm_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_xẩm"/>
+        <NamedIndividual IRI="#Hát_xẩm_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hát_xẩm"/>
+        <NamedIndividual IRI="#Hát_xẩm_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hòa_tấu"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hòa_tấu"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hòa_tấu"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hòa_tấu"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hòa_tấu"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Hòa_tấu"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Hộp_đàn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Khmer"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Kinh"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Lý"/>
+        <NamedIndividual IRI="#Lý_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Lý"/>
+        <NamedIndividual IRI="#Lý_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Lý"/>
+        <NamedIndividual IRI="#Lý_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#M_nông"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Móng_gảy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Mông"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Mường"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Mạ"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Mặt_đàn_sến"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Mặt_đàn_tranh"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Mặt_đàn_tính"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Mặt_đàn_tỳ_bà"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Ngựa_đàn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Nhã_nhạc_cung_đình_huế"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Nhã_nhạc_cung_đình_huế"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Nhã_nhạc_cung_đình_huế"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Nùng"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Phiến_đá"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Phím_gảy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Que_gãy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Thành_đàn_tranh"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Thái"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Thân_khèn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Thân_đàn_bầu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Thân_đàn_cò"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Thân_đàn_tỳ_bà"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Thùng_trống"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Thùng_đàn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Thủ_đàn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#khu_vực"/>
+        <NamedIndividual IRI="#Trung_du_miền_núi_phía_Bắc"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Trục_đàn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Nhạc_tuồng"/>
+        <NamedIndividual IRI="#Tuồng_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Nhạc_tuồng"/>
+        <NamedIndividual IRI="#Tuồng_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Nhạc_tuồng"/>
+        <NamedIndividual IRI="#Tuồng_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Tày"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#khu_vực"/>
+        <NamedIndividual IRI="#Tây_Nguyên"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Xơ_Đăng"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#các_ống_tre"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#guitar"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#khèn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#trống_quân"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#dân_tộc"/>
+        <NamedIndividual IRI="#Ê_đê"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Đáy_đàn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#khu_vực"/>
+        <NamedIndividual IRI="#Đông_Nam_Bộ"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Đầu_đàn"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Đồng"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#khu_vực"/>
+        <NamedIndividual IRI="#Đồng_bằng_sông_Cửu_Long"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#khu_vực"/>
+        <NamedIndividual IRI="#Đồng_bằng_sông_Hồng"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Đờn_ca_tài_tử_Nam_Bộ"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Đờn_ca_tài_tử_Nam_Bộ"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#nhạc_cụ"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Đờn_ca_tài_tử_Nam_Bộ"/>
+        <NamedIndividual IRI="#đờn_ca_tài_tử_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#bộ_phận"/>
+        <NamedIndividual IRI="#Ống_khèn"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#Thành_đàn_tranh"/>
+        <NamedIndividual IRI="#Phiến_đá"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#Đồng"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#Tây_Nguyên"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#Ba_na"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#Cơ_Ho"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#Gia_rai"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#M_nông"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#Thái"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#Xơ_Đăng"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#Ê_đê"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#Cồng_chiêng_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#Cồng_chiêng_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <NamedIndividual IRI="#Cồng_chiêng_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Cần_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Dây_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Thùng_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Đồng_bằng_sông_Cửu_Long"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Dân_tộc_Việt_Nam"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Chầu_văn_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Chầu_văn_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Chầu_văn_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Cải_lương_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#guitar"/>
+        <NamedIndividual IRI="#đờn_ca_tài_tử_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#khèn"/>
+        <NamedIndividual IRI="#Thân_khèn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#khèn"/>
+        <NamedIndividual IRI="#Ống_khèn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#khèn"/>
+        <NamedIndividual IRI="#Trung_du_miền_núi_phía_Bắc"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#khèn"/>
+        <NamedIndividual IRI="#H_mông"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#khèn"/>
+        <NamedIndividual IRI="#Mông"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#khèn"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#khèn"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#khèn"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <NamedIndividual IRI="#Cọc_gỗ"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <NamedIndividual IRI="#Dây_mây"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <NamedIndividual IRI="#Thùng_trống"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <NamedIndividual IRI="#Trung_du_miền_núi_phía_Bắc"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <NamedIndividual IRI="#Đồng_bằng_sông_Hồng"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <NamedIndividual IRI="#Hát_trống_quân_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <NamedIndividual IRI="#Hát_trống_quân_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <NamedIndividual IRI="#Hát_trống_quân_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Dây_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Que_gãy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Thân_đàn_bầu"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Bắc_Trung_Bộ"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Tây_Nguyên"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Đông_Nam_Bộ"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Đồng_bằng_sông_Cửu_Long"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Dân_tộc_Việt_Nam"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Ca_Huế_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Ca_Huế_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Ca_Huế_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Chầu_văn_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Chầu_văn_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Chầu_văn_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Cải_lương_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Hát_chèo_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Hát_chèo_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Hát_chèo_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Hát_xẩm_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Hát_xẩm_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Hát_xẩm_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Tuồng_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Tuồng_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Tuồng_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <NamedIndividual IRI="#đờn_ca_tài_tử_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Cần_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Thân_đàn_cò"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Duyên_hải_Nam_Trung_Bộ"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Đồng_bằng_sông_Cửu_Long"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Dao"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Giáy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#H_mông"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Khmer"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Kinh"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Mường"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Nùng"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Thái"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Tày"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Ca_Huế_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Ca_Huế_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Ca_Huế_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Chầu_văn_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Chầu_văn_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Chầu_văn_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Hát_chèo_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Hát_chèo_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Hát_chèo_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Hát_xẩm_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Hát_xẩm_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Hát_xẩm_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Tuồng_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Tuồng_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <NamedIndividual IRI="#Tuồng_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Bầu_vang"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Cần_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Dây_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Đầu_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Dân_tộc_Việt_Nam"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Ca_Huế_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Ca_Huế_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Ca_Huế_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Chầu_văn_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Chầu_văn_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Chầu_văn_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Cải_lương_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Hát_chèo_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Hát_chèo_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Hát_chèo_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <NamedIndividual IRI="#đờn_ca_tài_tử_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Bộ_phận_lên_dây"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Cần_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Dây_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Mặt_đàn_sến"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Phím_gảy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Thùng_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Đồng_bằng_sông_Cửu_Long"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Kinh"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Cải_lương_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Tuồng_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Tuồng_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Tuồng_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <NamedIndividual IRI="#đờn_ca_tài_tử_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+        <NamedIndividual IRI="#các_ống_tre"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+        <NamedIndividual IRI="#Tây_Nguyên"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+        <NamedIndividual IRI="#Ba_na"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+        <NamedIndividual IRI="#Gia_rai"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Cầu_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Dây_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Hộp_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Móng_gảy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Mặt_đàn_tranh"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Ngựa_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Thành_đàn_tranh"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Trục_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Đáy_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Dân_tộc_Việt_Nam"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Ca_Huế_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Ca_Huế_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Ca_Huế_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Chầu_văn_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Chầu_văn_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Chầu_văn_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Cải_lương_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Hát_chèo_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Hát_chèo_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Hát_chèo_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Lý_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Lý_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Lý_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Tuồng_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Tuồng_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <NamedIndividual IRI="#Tuồng_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Bầu_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Cần_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Dây_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Mặt_đàn_tính"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Thủ_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Trung_du_miền_núi_phía_Bắc"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Nùng"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Thái"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Tày"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Hát_then_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Hát_then_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <NamedIndividual IRI="#Hát_then_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Bộ_phận_lên_dây"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Dây_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Mặt_đàn_tỳ_bà"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Phím_gảy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Thân_đàn_tỳ_bà"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Thùng_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Dân_tộc_Việt_Nam"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Cải_lương_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <NamedIndividual IRI="#đờn_ca_tài_tử_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Dùi_gõ"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Phiến_đá"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Tây_Nguyên"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Đông_Nam_Bộ"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Ba_na"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Cơ_Ho"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Gia_rai"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#M_nông"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Mạ"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Nùng"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Xơ_Đăng"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Ê_đê"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <NamedIndividual IRI="#Bầu_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <NamedIndividual IRI="#Cần_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <NamedIndividual IRI="#Dây_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <NamedIndividual IRI="#Đầu_đàn"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <NamedIndividual IRI="#Bắc_Trung_Bộ"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <NamedIndividual IRI="#Đồng_bằng_sông_Hồng"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <NamedIndividual IRI="#Ca_trù_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <NamedIndividual IRI="#Ca_trù_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <NamedIndividual IRI="#Ca_trù_3"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Ca_Huế_1"/>
+        <Literal>https://youtu.be/EQfv1-i1X4s?si=T8fi1FjztGaldI-x</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Ca_Huế_1"/>
+        <Literal>Ca Huế - Tứ Đại (lời cổ)</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Ca_Huế_1"/>
+        <Literal>NSƯT Thu Hằng</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Ca_Huế_2"/>
+        <Literal>https://youtu.be/UtnA52CgVDM?si=rXPFZzj2g6tSLGT0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Ca_Huế_2"/>
+        <Literal>Ca Huế - Hành Vân (lời cổ)</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Ca_Huế_2"/>
+        <Literal>nghệ sĩ Diệu Hiền</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Ca_Huế_3"/>
+        <Literal>https://youtu.be/SUPLO4p-AKw?si=uJcfVngFxpJiOaDO</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Ca_Huế_3"/>
+        <Literal>Ca Huế: Tứ Đại Cảnh</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Ca_Huế_3"/>
+        <Literal>NS Kim Liên</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Ca_trù_1"/>
+        <Literal>https://youtu.be/rPH0FDc9sbg?si=kTSNV8g4w2Btd2M-</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Ca_trù_1"/>
+        <Literal>Thể cách Thét nhạc &quot;Tiếng dương tranh&quot;</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Ca_trù_1"/>
+        <Literal>Đào nương Khánh Linh, Đào đàn Thu Hương</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Ca_trù_2"/>
+        <Literal>https://youtu.be/DSc6ouU8Pj4?si=4R5XjUfOkkM8517I</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Ca_trù_2"/>
+        <Literal>Ca trù: Trăng Nguyên Tiêu</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Ca_trù_2"/>
+        <Literal>Ca nương Thu Hà</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Ca_trù_3"/>
+        <Literal>https://youtu.be/hktfHb4cb4I?si=VwRCDBzFyxh6Fuge</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Ca_trù_3"/>
+        <Literal>Ca trù Hồng Hồng Tuyết Tuyết</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Ca_trù_3"/>
+        <Literal>Đỗ Lê Thanh - Đoàn NT ca múa nhạc dân tộc Hồng Hà</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Chầu_văn_1"/>
+        <Literal>https://youtu.be/8EETNR5IQxU?si=0Am71nzEbS1mvouN</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Chầu_văn_1"/>
+        <Literal>Chầu văn Huế: Cảnh Đẹp Huế Đô</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Chầu_văn_2"/>
+        <Literal>https://youtu.be/Td2AhTIwnaI?si=eLhgvD_3AOf7jNiX</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Chầu_văn_2"/>
+        <Literal>Chầu Năm Suối Lân</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Chầu_văn_3"/>
+        <Literal>https://youtu.be/MkrBmm9XldI?si=6YmOuKekoYZyXxAe</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Chầu_văn_3"/>
+        <Literal>Cô bé Thượng ngàn - Chầu văn cổ</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Chầu_văn_3"/>
+        <Literal>Linh Hoa - Thanh Quý, Ban nhạc nghệ nhân Thanh Long, vũ đoàn Phương Việt</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Cải_lương_1"/>
+        <Literal>https://youtu.be/mQCEuZqCwi4?si=bLB7FcKmbMfZBine</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tác_giả_là"/>
+        <NamedIndividual IRI="#Cải_lương_1"/>
+        <Literal>Nhạc Sĩ: Trừ Quang-Văn Dần- Ngọc Tuấn</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Cải_lương_1"/>
+        <Literal>Hòa tấu cải lương Trăng Thu Dạ Khúc</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+        <Literal>https://youtu.be/ubiP-H700bQ?si=kQ3MgbQVu2dfw3li</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tác_giả_là"/>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+        <Literal>TRỌNG NGUYỄN</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+        <Literal>GIỌT SỮA CUỐI CÙNG</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Cải_lương_2"/>
+        <Literal>TÚ TRI</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+        <Literal>https://youtu.be/osXRCiSu8Uw?si=gp-QzKKakxA5iSfN</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tác_giả_là"/>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+        <Literal>Huỳnh Thanh Tuấn</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+        <Literal>Tình Sử Trương Chi</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Cải_lương_3"/>
+        <Literal>Nguyễn Sĩ Đang</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Cồng_chiêng_1"/>
+        <Literal>https://youtu.be/e54ounU3SBM?si=D0IelxPqpiDesYjd</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tác_giả_là"/>
+        <NamedIndividual IRI="#Cồng_chiêng_1"/>
+        <Literal>Huy Tâm</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Cồng_chiêng_1"/>
+        <Literal>Vui hội cồng chiêng</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Cồng_chiêng_1"/>
+        <Literal>NSƯT Hồng Tam</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Cồng_chiêng_2"/>
+        <Literal>https://youtu.be/nBoa6e6rZHA?si=aeNQFwqQIEvrorFT</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Cồng_chiêng_2"/>
+        <Literal>Giai Điệu Công Chiềng Plei Chuêt</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Cồng_chiêng_3"/>
+        <Literal>https://youtu.be/woN7XQlKgak?si=OsM5-qgegiyDwAb0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Cồng_chiêng_3"/>
+        <Literal>Giai Điệu Cồng Chiêng Ha Tây</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_1"/>
+        <Literal>https://youtu.be/pDm0SIpbNbM?si=JcB-HNq_erRyu90f</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_1"/>
+        <Literal>Độc tấu khèn Mông: Âm thanh của núi</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_1"/>
+        <Literal>Vàng Lao Lanh</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_2"/>
+        <Literal>https://youtu.be/xiGMkFtm5XQ?si=82PyM-RiqrByU3C7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_2"/>
+        <Literal>Diễn tấu Khèn đôi</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_2"/>
+        <Literal>Đoàn Văn hóa Nghệ thuật tỉnh Đắk Lắk</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_3"/>
+        <Literal>https://youtu.be/U6ZuaOODmZE?si=ZrUGyFCJxia4Up9a</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_3"/>
+        <Literal>Hoà tấu khèn bè</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Diễn_tấu_khèn_3"/>
+        <Literal>Đoàn Yên Châu độc đáo biểu diễn trong Giao lưu VH Thái tại Lào Cai</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_chèo_1"/>
+        <Literal>https://youtu.be/v-LrDeupUZk?si=4b7xP1q7Zkv3O3By</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_chèo_1"/>
+        <Literal xml:lang="vi">Lới lơ</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_chèo_2"/>
+        <Literal>https://youtu.be/Pn8gbAbK2EU?si=9QXi37LP1CXfWPzQ</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_chèo_2"/>
+        <Literal xml:lang="vi">Chèo Tứ Quý</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hát_chèo_2"/>
+        <Literal>Ban nhạc đại gia đình Phạm Hồng</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_chèo_3"/>
+        <Literal>https://youtu.be/v-iry82G85k?si=1h8iLMwOBelAZJT2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_chèo_3"/>
+        <Literal xml:lang="vi">Thị Mầu lên chùa</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hát_chèo_3"/>
+        <Literal xml:lang="vi">Dàn nhạc nhà hát chèo Thái Bình</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_1"/>
+        <Literal>https://youtu.be/2oSA1Rdyyfs?si=3cqsQLRbVpwTV4CA</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_1"/>
+        <Literal>NHỊP CẦU PHU THÊ</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_2"/>
+        <Literal>https://youtu.be/m_lLCe9BiY0?si=MymTiP0CYzZgtQUR</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_2"/>
+        <Literal>Bài &quot;Giã từ&quot; và &quot;Đi ra&quot; - Hát sắc bùa Phú Lễ</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_2"/>
+        <Literal>Ban sắc bùa Phú Lễ (Bến Tre)</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_3"/>
+        <Literal>https://youtu.be/mMvVOrASnGg?si=WDc8ENDtw-EJEs31</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_sắc_bùa_3"/>
+        <Literal>Bài &quot;Mở cửa rào&quot; &amp; &quot;Mở ngõ&quot;</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_then_1"/>
+        <Literal>https://youtu.be/i_wqn5rXwVo?si=z-NnPmU6l161wp6U</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_then_1"/>
+        <Literal>Hát then Lập Xuân</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hát_then_1"/>
+        <Literal>Tốp nữ Đoàn Văn công Quân khu 1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_then_2"/>
+        <Literal>https://youtu.be/kYRpktW1PVo?si=LhDSH1Sn0ah_t41A</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tác_giả_là"/>
+        <NamedIndividual IRI="#Hát_then_2"/>
+        <Literal>Hoa Cương</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_then_2"/>
+        <Literal>Dương nghịa trang liệt sĩ Trường Sơn</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hát_then_2"/>
+        <Literal>Hương Lê</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_then_3"/>
+        <Literal>https://youtu.be/C8Ue1Ki4wG4?si=q9qXxlEQxIrNPxk6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tác_giả_là"/>
+        <NamedIndividual IRI="#Hát_then_3"/>
+        <Literal>Hoa Cương</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_then_3"/>
+        <Literal>BA BỂ CẢNH TIÊN</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hát_then_3"/>
+        <Literal>LÝ Chiến – LÝ Hiên</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_trống_quân_1"/>
+        <Literal>https://youtu.be/yjaRK57dVGE?si=pplmOWLuVqNo5SnS</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tác_giả_là"/>
+        <NamedIndividual IRI="#Hát_trống_quân_1"/>
+        <Literal>Thịnh Trường</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_trống_quân_1"/>
+        <Literal>Hát Trống Quân</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hát_trống_quân_1"/>
+        <Literal>Tốp ca Nam Nữ TTVH Tỉnh &amp; Và Nhà Hát Chèo Hưng Yên</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_trống_quân_2"/>
+        <Literal>https://youtu.be/EYks2209bgA?si=0CiVv8e4nHupcbXm</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_trống_quân_2"/>
+        <Literal>Hát Trống Quân Dạ Trạch</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_trống_quân_3"/>
+        <Literal>https://youtu.be/mCGFg1EujoQ?si=HWbo3QR3TuS5VTmB</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_trống_quân_3"/>
+        <Literal>Hát trống quân &quot; Thách cưới&quot;</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_xẩm_1"/>
+        <Literal>https://youtu.be/JYDtti_zLUM?si=aFXJAwgk6QTrfgyb</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_xẩm_1"/>
+        <Literal>Xẩm Ba bậc</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hát_xẩm_1"/>
+        <Literal>NSƯT Thanh Ngoan</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hát_xẩm_2"/>
+        <Literal>https://youtu.be/_zPln1ajH8E?si=RouMNGFnQx5kvcMI</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_xẩm_2"/>
+        <Literal>Hát xẩm - Cô gái quay tơ</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hát_xẩm_2"/>
+        <Literal>Nghệ sĩ Xuân Quỳnh</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hát_xẩm_3"/>
+        <Literal>XẨM THẬP ÂN - CÔNG CHA NGÃI MẸ SINH THÀNH</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hát_xẩm_3"/>
+        <Literal>HÀ MYO x THẾ PHƯƠNG VBK</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_1"/>
+        <Literal>https://youtu.be/fRMGQ9q-Wsk?si=dWXHI45mm-2Sj9NQ</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_1"/>
+        <Literal>Bóng Cây Kơ Nia</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_1"/>
+        <Literal>Diệp Chi</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_2"/>
+        <Literal>https://youtu.be/Mq4aHAhLytI?si=bSt_pfFGMavcqR9H</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_2"/>
+        <Literal>Đàn T&apos;Rưng Cô Gái Vót Chông</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_2"/>
+        <Literal>Ksor Bla</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_3"/>
+        <Literal>https://youtu.be/1IRi8ZzV3aE?si=hI2PCCrkQ8pF9_V9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_3"/>
+        <Literal>Tây Nguyên chào mặt trời</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_t_rưng_3"/>
+        <Literal>Đoàn nghệ thuật Việt Nam Nhân duyên</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_1"/>
+        <Literal>https://youtu.be/iZLMoo6dO88?si=PU3yO8GZf-nth_jG</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_1"/>
+        <Literal>Độc tấu đàn đá “Cô gái vót chông”</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_2"/>
+        <Literal>https://youtu.be/4yJRCN9Ako8?si=UEUGPdBD6bmgRbBu</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_2"/>
+        <Literal>Chiếc Khăn Piêu</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_2"/>
+        <Literal>Band nhạc cụ dân tộc</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_3"/>
+        <Literal>https://youtu.be/KRIZGPgxJCI?si=GRvO1A-9Vb5PcoQi</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_3"/>
+        <Literal>Âm Vang Đất Nước</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Hòa_tấu_đàn_đá_3"/>
+        <Literal>Tuấn Trường</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Lý_1"/>
+        <Literal>https://youtu.be/_FZX0wiLjNM?si=8tIU3nSzRQvRqZb3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Lý_1"/>
+        <Literal>Độc tấu đàn tranh: Lý áo vá quàng</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Lý_1"/>
+        <Literal>Hoàng Cơ Thụy</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Lý_2"/>
+        <Literal>https://youtu.be/LZEh4DOjCLU?si=4NGslC8ssMfyDc-v</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Lý_2"/>
+        <Literal>Lý con sáo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Lý_2"/>
+        <Literal>Hương Lan, Hoàng Cơ Thụy</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Lý_3"/>
+        <Literal>https://youtu.be/sMwM3Hqa7gA?si=At9dTyjy4FYXi095</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Lý_3"/>
+        <Literal>Lý Tình Tang</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Lý_3"/>
+        <Literal>NSƯT. Hải Phượng</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_1"/>
+        <Literal>https://youtu.be/JxZg1U_NWUU?si=COTBXEcZPwafghJR</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_1"/>
+        <Literal>Lưu Thủy Kim Tiền - Xuân Phong Long Hổ</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_1"/>
+        <Literal>Ban Nhạc Trúc Xanh</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_2"/>
+        <Literal>https://youtu.be/OMpIp0VKqQo?si=VxXlDwiObeGFZXEO</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_2"/>
+        <Literal>Bình Bán- Tây Mai</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_2"/>
+        <Literal>NS Mai Nga, Dàn Tiểu nhạc Nhà hát Cung đình Huế</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_3"/>
+        <Literal>https://youtu.be/iecoYPwguXA?si=ovzQDG1aCIRG7psU</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_3"/>
+        <Literal>ĐĂNG ĐÀN CUNG - PHÚ LỤC ĐỊCH</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Nhạc_cung_đình_3"/>
+        <Literal>Tập thể học sinh trung cấp hòa tấu Huế</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Tuồng_1"/>
+        <Literal>https://youtu.be/JI_5hNum6Qg?si=MYhrmsQxdJ4_yPhO</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Tuồng_1"/>
+        <Literal>Hoà tấu nhạc Tuồng</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Tuồng_2"/>
+        <Literal>https://youtu.be/uRyQHv6k3TU?si=36F9dhXbaqEauYbp</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Tuồng_2"/>
+        <Literal>Trích Đoạn Tuồng Hồ Nguyệt Cô Hóa Cáo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Tuồng_3"/>
+        <Literal>https://youtu.be/LjECDJ0yyuw?si=9bLyVAn5nEHO55xV</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Tuồng_3"/>
+        <Literal>Trích Đoạn Tuồng Kim Lân Qua Đèo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <Literal xml:lang="vi">Nghệ thuật diễn tấu cồng chiêng thường do một nhóm người thực hiện, mỗi người đánh một chiếc cồng hoặc chiêng. Người chơi dùng dùi gỗ để gõ vào mặt cồng hoặc chiêng, tạo ra âm thanh vang vọng. Kỹ thuật đánh cồng chiêng yêu cầu sự phối hợp nhịp nhàng và tinh tế giữa các thành viên trong nhóm để tạo ra những giai điệu phong phú, có khi mạnh mẽ, có khi êm dịu</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <Literal>Cồng chiêng Tây Nguyên có nguồn gốc từ truyền thống văn hóa và lịch sử rất lâu đời. Về cội nguồn, có nhà nghiên cứu cho rằng, cồng chiêng là “hậu duệ” của đàn đá</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+        <NamedIndividual IRI="#cồng_chiêng"/>
+        <Literal>cồng chiêng có từ thời cổ đại, bắt nguồn từ nền văn minh Đông Sơn có cách đây ít nhất 3.500-4.000 năm</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#guitar"/>
+        <Literal>cây đàn guitar đầu tiên xuất hiện ở Ai Cập và Babylon cách Công nguyên về trước 1000 năm</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_số_dây_là"/>
+        <NamedIndividual IRI="#guitar"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+        <NamedIndividual IRI="#guitar"/>
+        <Literal>đàn guitar đã theo chân các cố đạo Tây Ban Nha du nhập vào Việt Nam từ đầu thế kỷ 19. Nhưng phải đến năm 1920 mới bắt đầu xuất hiện những người Việt Nam chơi guitar</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#khèn"/>
+        <Literal xml:lang="vi">Khi biểu diễn, người chơi khèn thổi vào miệng ống và dùng tay để bịt hoặc mở các lỗ trên thân khèn, tạo ra những giai điệu khác nhau. Âm thanh của khèn trong trẻo, vang vọng và có thể diễn tả nhiều cung bậc cảm xúc, từ vui tươi, phấn khởi đến trầm lắng, suy tư. Kỹ thuật chơi khèn yêu cầu sự khéo léo và luyện tập, vì người chơi phải kiểm soát hơi thở và các ngón tay một cách nhịp nhàng</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#khèn"/>
+        <Literal>Dân tộc Mông</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <Literal xml:lang="vi">Khi diễn tấu nghệ nhân dùng que gõ lên sợi dây mây giữ nhịp điệu. Khi hát dứt một câu, người hát lấy que gõ nhịp vào dây, tạo nên một cung âm rung chuyễn truyền qua cọc xuống chiếc thùng gỗ xuyên xuống hố đất bên dưới. Không khí chứa trong hố đất bên dưới dao động, phát ra âm thanh cộng hưởng thùng, thình vang động rất xa</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <Literal>Việt Nam</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_số_dây_là"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+        <NamedIndividual IRI="#trống_quân"/>
+        <Literal>trống quân xuất hiện vào đời nhà Trần, thời chống quân Nguyên, binh sỹ khi giải trí ngồi thành hai hàng đối nhau, một bên là &quot;hát xướng,&quot; một bên là &quot;hát đáp,&quot; khi hát gõ vào tang trống để làm nhịp</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_2"/>
+        <Literal>https://youtu.be/PEVcMBXbiU0?si=LH_20cxmugPSt1TL</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_2"/>
+        <Literal>DẠ CỔ HOÀI LANG</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_2"/>
+        <Literal>NSƯT HẢI PHƯỢNG</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_3"/>
+        <Literal>https://youtu.be/WEz4wjq3Op4?si=7DO92aL5N8vDw7QR</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_3"/>
+        <Literal>Hòa Tấu Ngũ Đối Hạ</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#Đờn_ca_tài_tử_3"/>
+        <Literal>Nghệ nhân ưu tú Trường Giang, Nghệ nhân ưu tú Duy Kim, Nghệ nhân Phú Qúy, Nghệ nhân Hữu Phước</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <Literal xml:lang="vi">Nét nổi bật của đàn bầu là tạo ra tiếng đàn là sóng bồi âm. Đàn bầu có hai phần chính: phần cầm que tạo ra tiếng đàn và dùng cần đàn để nhấn cao độ lên và xuống. Cây đàn bầu độc đáo về cách sử dụng là như thế. Thường các cây đàn khác bật bằng dây buông, như đàn ghi ta có phím để thay đổi âm vực khác nhau, nhưng cây đàn bầu thì cái chặn dây lại bằng tay thay cho phím đàn</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <Literal xml:lang="vi">nhạc cụ thuần Việt</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_số_dây_là"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+        <NamedIndividual IRI="#đàn_bầu"/>
+        <Literal xml:lang="vi">hàng ngàn năm trước</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <Literal xml:lang="vi">Khi biểu diễn, người chơi đàn cò đặt thân đàn lên đùi hoặc chân, cần đàn hướng lên trên. Người chơi dùng cung vĩ kéo qua lại trên dây đàn để tạo ra âm thanh. Bằng cách nhấn dây đàn và điều chỉnh vị trí của ngón tay trên cần đàn, nghệ nhân có thể tạo ra các nốt nhạc với cao độ khác nhau. Kỹ thuật chơi đàn cò bao gồm việc sử dụng cung vĩ một cách linh hoạt, kết hợp với các kỹ thuật ngón như rung, vuốt, và gẩy để tạo nên những giai điệu phong phú và truyền cảm</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <Literal xml:lang="vi">xuất xứ từ Ấn Độ và vùng Trung Á</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_số_dây_là"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+        <NamedIndividual IRI="#đàn_cò"/>
+        <Literal xml:lang="vi">khoảng thế kỷ X</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <Literal>Ngày xưa người biểu diễn nuôi móng tay dài để khảy đàn nguyệt, ngày nay miếng khảy đàn đã giữ nhiệm vụ này</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <Literal>từ cây nguyệt cầm (Yue k’in) của người Trung Hoa do Nguyễn Hàn tự là Trọng Dung đời nhà Tấn chế tạo ra</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_số_dây_là"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+        <NamedIndividual IRI="#đàn_nguyệt"/>
+        <Literal>xuất hiện trong mỹ thuật Việt Nam từ thế kỷ XI</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <Literal xml:lang="vi">Khi diễn tấu nhạc công gẩy đàn bằng tay không, ít khi chơi đàn với móng gảy làm từ nhựa tạo ra âm sắc trong trẻo, tươi sáng. Các kỹ thuật chơi đàn sến gồm luân chỉ (vê ngón), luân chỉ hòa khiêu (gảy và vê ngón), tỳ , đẩy những ngón tay của bàn tay phải từ phải sang trái và có thể sử dụng một hoặc vài ngón tay theo cách đó để đánh cùng lúc nhằm cho việc tạo đa âm (ngón bật), đánh chập nhanh bằng bốn ngón tay</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <Literal>xuất xứ từ Trung Quốc</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_số_dây_là"/>
+        <NamedIndividual IRI="#đàn_sến"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+        <Literal xml:lang="vi">Kỹ thuật diễn tấu nhạc cụ này khá đơn giản, nghệ nhân dùng dùi (bằng tre hoặc gỗ) gõ vào ống để tạo ra âm thanh. Người chơi có thể đánh ngón vê, ngón á giống như chơi đàn tam thập lục, gõ nhanh chậm đều tốt. Đàn T&apos;rưng cũng có thể đánh chồng âm hoặc đồng âm với hai nốt cách nhau 1 quãng tám</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+        <Literal>dân tộc Gia Rai</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+        <NamedIndividual IRI="#đàn_t_rưng"/>
+        <Literal>ước tính rằng loại đàn này đã xuất hiện từ khoảng 1000 năm trước</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <Literal xml:lang="vi">người chơi đàn tranh thường ngồi trên sàn hoặc trên ghế thấp, đặt đàn lên đùi hoặc một giá đỡ. Người chơi dùng ngón tay hoặc móng tay để gảy dây, tạo ra âm thanh. Các ngón tay phải thực hiện kỹ thuật gảy dây, trong khi ngón tay trái ấn hoặc kéo dây trên mặt đàn để tạo ra các hiệu ứng rung, uốn, và vuốt</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <Literal>nền văn hóa cổ truyền Đông Á</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_số_dây_là"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">16</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+        <NamedIndividual IRI="#đàn_tranh"/>
+        <Literal>thời nhà Lý (thế kỷ XI-XIII)</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <Literal xml:lang="vi">Theo cách đánh đàn xưa, người diễn không dùng que khảy mà chỉ khảy bằng ngón tay trỏ của tay phải. Ngón cái và giữa giữ cần đàn ở nơi gần sát bầu đàn. Ngón trỏ khảy xuống và hất lên luân phiên khi chơi giai điệu nhanh. Còn nếu giai điệu chậm thì ngón trỏ chỉ khảy xuống. Kỹ thuật tay phải gồm có ngón vê, ngón phi và đánh âm nền… Riêng về tay trái gồm có các thế bấm như ngón rung, ngón vuốt, ngón vê, ngón phi, ngón luyến và âm bội</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <Literal>là nhạc cụ của người Choang ở Trung Quốc , người Tày, người Nùng, người Thái ở Việt Nam</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_số_dây_là"/>
+        <NamedIndividual IRI="#đàn_tính"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <Literal xml:lang="vi">Tư thế đàn: có hai tư thế ngồi đó là ngồi thấp, xếp chân trên chiếu hoặc ngồi cao, thẳng trên ghế, đàn được đặt gần như thẳng đứng. Kỹ thuật tay phải: Tay phải gảy đàn, cách sử dụng móng tay để đàn. Kỹ thuật tay trái: Kỹ thuật tay trái của đàn tỳ bà có các ngón nhấn, ngón vuốt, bấm hợp âm</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <Literal>Tỳ bà đã xuất hiện rất sớm ở Trung Quốc</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_số_dây_là"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+        <NamedIndividual IRI="#đàn_tỳ_bà"/>
+        <Literal>Đàn Tỳ bà du nhập sang Việt Nam từ trước thời nhà Trần</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <Literal xml:lang="vi">Có nhiều cách biểu diễn đàn đá: Người M’Nông buộc dây ở hai đầu thanh đá thành chuỗi dài, người đối diện dùng gùi gõ vào. Người Mạ thì lại ngồi duỗi hai chân, đặt thanh đá lên đùi. Mỗi người đánh một âm, tập thể thành bộ đàn cũng như cồng chiêng vậy; có thể đánh giai điệu hoặc nhiều âm hòa vào nhau cùng lúc. Nhưng cách chơi đàn hiện nay phổ biến nhất, tiện lợi cho việc trình diễn, đảm bảo yếu tố thẩm mỹ chính là việc sắp xếp đàn đá trên một mặt phẳng</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <Literal>nhạc cụ cổ nhất của Việt Nam</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+        <NamedIndividual IRI="#đàn_đá"/>
+        <Literal>xuất hiện từ thời tiền sử, được phát hiện tại Ndut Liêng Krak, Đắk Lắk năm 1949</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_cách_chơi_là"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <Literal xml:lang="vi">Người biểu diễn thường dùng đàn đáy đệm cho giọng nữ cao hoặc phối hợp với những nhạc cụ gõ có âm thanh khô (ít vang)</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_nguồn_gốc"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <Literal>Việt nam</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_số_dây_là"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#xuất_hiện_ở_Việt_Nam_vào"/>
+        <NamedIndividual IRI="#đàn_đáy"/>
+        <Literal>phổ biến trong dân gian vào thời nhà Mạc. Thời điểm xuất hiện của Đàn Đáy theo đó được các nhà nghiên cứu nghi nhận sớm nhất là thế kỷ 15</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_URL_là"/>
+        <NamedIndividual IRI="#đờn_ca_tài_tử_1"/>
+        <Literal>https://youtu.be/6NdaXtSnfgs?si=M-Iie4RR5eyJ0uT0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#có_tên_là"/>
+        <NamedIndividual IRI="#đờn_ca_tài_tử_1"/>
+        <Literal>Đoãn khúc lam giang</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#được_biểu_diễn_bởi"/>
+        <NamedIndividual IRI="#đờn_ca_tài_tử_1"/>
+        <Literal>Nhạc sĩ Nguyễn Phu</Literal>
+    </DataPropertyAssertion>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <Class IRI="#nhạc_cụ"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <Class IRI="#nhạc_cụ"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <Class IRI="#nhạc_cụ"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <Class IRI="#nhạc_cụ"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#có_cấu_tạo_gồm"/>
+        <Class IRI="#bộ_phận"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#là_nhạc_cụ_đặc_trưng_ở"/>
+        <Class IRI="#khu_vực"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#được_dùng_rộng_rãi_trong_dân_tộc"/>
+        <Class IRI="#dân_tộc"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#được_sử_dụng_trong"/>
+        <Class IRI="#loại_hình_nghệ_thuật"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
