@@ -8,7 +8,16 @@
                     <b>- {{ index }}:</b> {{ item }}
                 </li>
             </ul>
+
+            <p style="margin-bottom:5px; font-size:18px"><b>Trải nghiệm AR:</b></p>
+            <div class="zoomable-image-wrapper">
+                <img :src="getQRCodePath(one_class_name)" alt="QR nhạc cụ AR" class="zoomable-image" @click="toggleZoom"
+                    :class="{ zoomed: isZoomed }" />
+                <div style="text-align: center; margin-top: 8px;">Hãy dùng Camera để quét mã này.</div>
+            </div>
+
         </div>
+
         <p style="margin-bottom:20px; font-size:18px"><b>Các loại hình nghệ thuật</b></p>
         <div class="ontology-video">
             <div v-for="(video, videoIndex) in videos" :key="videoIndex" class="ontology-video-item">
@@ -38,6 +47,7 @@ export default {
         return {
             ontology_info: String,
             videos: [],
+            isZoomed: false,
         };
     },
     props: {
@@ -49,6 +59,14 @@ export default {
         this.getOntologyInfor();
     },
     methods: {
+        getQRCodePath(name) {
+            if (!name) return "";
+            // Giả sử ảnh QR đặt trong public/assets/qrcodes/ dưới dạng .png
+            return `/QR/${name}.png`;
+        },
+        toggleZoom() {
+            this.isZoomed = !this.isZoomed;
+        },
         getEmbedUrl(url) {
             // Lấy video ID từ URL
             const videoId = url.split('v=')[1] ? url.split('v=')[1].split('&')[0] : url.split('youtu.be/')[1].split('?')[0];
@@ -229,5 +247,25 @@ export default {
     justify-content: center;
     width: 100%;
     margin-bottom: 10px;
+}
+
+.zoomable-image-wrapper {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.zoomable-image {
+    max-width: 100%;
+    max-height: 300px;
+    cursor: zoom-in;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.zoomable-image.zoomed {
+    transform: scale(2);
+    cursor: zoom-out;
+    z-index: 1000;
 }
 </style>
