@@ -1,4 +1,4 @@
-import createApiClient from "./api.service";
+import createApiClient from "./api.predict.service";
 
 class PredictService {
     constructor(baseUrl = "/api/detect/") {
