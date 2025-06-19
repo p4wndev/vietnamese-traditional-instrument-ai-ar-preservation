@@ -1,6 +1,5 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.http import JsonResponse
 from rest_framework import status
 from .models import Img_predictions, Instrument
 from ultralytics import YOLO
@@ -11,23 +10,59 @@ import numpy as np
 from numpy import argmax
 import tensorflow as tf
 import os
-import os
-import tensorflow as tf
-from django.conf import settings
+import torch
+import contextlib
 
+def create_lenet_model(input_shape=(64, 64, 3), num_classes=14):
+    model = tf.keras.Sequential([
+        # Lớp Convolution đầu tiên
+        tf.keras.layers.Conv2D(
+            filters=32, 
+            kernel_size=(5, 5), 
+            padding='same', 
+            activation='relu', 
+            input_shape=input_shape,
+            name='conv2d_1'
+        ),
+        
+        # Lớp Max Pooling
+        tf.keras.layers.MaxPooling2D(pool_size=(2, 2), strides=2),
+        
+        # Lớp Convolution thứ hai
+        tf.keras.layers.Conv2D(
+            filters=48, 
+            kernel_size=(5, 5), 
+            padding='valid', 
+            activation='relu',
+            name='conv2d_2'
+        ),
+        
+        # Lớp Max Pooling thứ hai
+        tf.keras.layers.MaxPooling2D(pool_size=(2, 2), strides=2),
+        
+        # Làm phẳng đầu vào
+        tf.keras.layers.Flatten(),
+        
+        # Lớp Dense 256
+        tf.keras.layers.Dense(256, activation='relu'),
+        
+        # Lớp Dense 84
+        tf.keras.layers.Dense(84, activation='relu'),
+        
+        # Lớp đầu ra
+        tf.keras.layers.Dense(num_classes, activation='softmax')
+    ])
+    return model
 
 class InstrumentList(APIView):
     def get(self, request, *args, **kwargs):
-        # Truy vấn tất cả các nhạc cụ từ cơ sở dữ liệu
         instruments = Instrument.objects.all()
-        # Chuẩn bị dữ liệu để trả về dưới dạng JSON
         data = []
         for instrument in instruments:
             data.append({
                 'name': instrument.name,
                 'description': instrument.description,
             })
-        # Trả về JSON response
         return Response(data, status=status.HTTP_200_OK)
 
 class ImageDetectAPI(APIView):
@@ -47,7 +82,20 @@ class ImageDetectAPI(APIView):
         return Response({'output': output, "cl_o": cl_out})
 
     def detect_img(self, path_img):
-        model = YOLO("E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//model_yolo//best.pt")
+        # Context manager để tạm thời vô hiệu hóa weights_only
+        @contextlib.contextmanager
+        def disable_weights_only():
+            original_load = torch.load
+            torch.load = lambda f, *args, **kwargs: original_load(f, *args, **{**kwargs, 'weights_only': False})
+            try:
+                yield
+            finally:
+                torch.load = original_load
+        
+        # Sử dụng context manager khi load model YOLO
+        with disable_weights_only():
+            model = YOLO("E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//model_yolo//best.pt")
+        
         img_input = cv2.imread(path_img)
         rs = model.predict(source=img_input)
         rs = rs[0]
@@ -58,31 +106,40 @@ class ImageDetectAPI(APIView):
             box = ob.xyxy[0].tolist()
             box = [round(x) for x in box]
             x1, y1, x2, y2 = box
-            conf = ob.conf[0].item()
             img_cut = img_input[y1:y2, x1:x2]
             listImg.append(img_cut)
+            os.makedirs('instrument/static/predict', exist_ok=True)
             cv2.imwrite(f'instrument/static/predict/image_{i:03d}.jpg', img_cut)
             i += 1
 
         for t in range(len(listImg)):
-            a = cv2.cvtColor(listImg[t], cv2.COLOR_RGB2BGR)
+            a = cv2.cvtColor(listImg[t], cv2.COLOR_BGR2RGB)  # Sửa từ RGB2BGR thành BGR2RGB
             label = self.predict_lenet(a)
-            # print(label)
             print(f"Label for image_{t:03d}: {label}")
             class_out.append(label)
 
         return i, class_out
 
     def predict_lenet(self, image):
-        categories = ['cong_chieng', 'dan_bau', 'dan_co', 'dan_da', 'dan_day', 'dan_nguyet', 'dan_sen', 'dan_t_rung', 'dan_tinh', 'dan_tranh', 'dan_ty_ba', 'guitar', 'khen', 'trong_quan']    
-        model_lenet = tf.keras.models.load_model("E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//model_lenet//lenet_model30.h5")
-        model_lenet.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])  # Compile the model
-        img_input = cv2.resize(image, dsize=(64, 64))
-        img_array = np.array(img_input)
-        from tensorflow.keras.applications.resnet50 import preprocess_input
+        categories = ['cong_chieng', 'dan_bau', 'dan_co', 'dan_da', 'dan_day', 'dan_nguyet', 
+                    'dan_sen', 'dan_t_rung', 'dan_tinh', 'dan_tranh', 'dan_ty_ba', 
+                    'guitar', 'khen', 'trong_quan']
+        
+        # Tạo model với kiến trúc chính xác
+        model_lenet = create_lenet_model(input_shape=(64, 64, 3), num_classes=14)
+        
+        # Load weights từ file
+        model_lenet.load_weights("E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//model_lenet//lenet_model30.h5")
+        
+        # Tiền xử lý ảnh
+        img_input = cv2.resize(image, (64, 64))
+        img_array = img_input.astype('float32') / 255.0
+        
+        # Chuẩn bị batch dự đoán
         img_batch = np.expand_dims(img_array, axis=0)
-        img_preprocessed = preprocess_input(img_batch)
-        pred = model_lenet(img_preprocessed)
+        
+        # Thực hiện dự đoán
+        pred = model_lenet.predict(img_batch)
         res = argmax(pred, axis=1)
         return categories[res[0]]
 
@@ -191,3 +248,102 @@ class OntologyInfoView(APIView):
 
         return Response({'ontology_info': dict_onto_info, 'videos': list_dict_video_out}, status=status.HTTP_200_OK)
     
+
+
+# ====================================================================================
+# ====================================================================================
+#   RAG
+# ====================================================================================
+# ====================================================================================
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_openai import ChatOpenAI
+from langchain.chains import RetrievalQA
+from langchain.prompts import PromptTemplate
+from langchain_community.vectorstores import FAISS
+from dotenv import load_dotenv
+
+load_dotenv()  # Đọc file .env
+# Thiết lập API key cho OpenAI
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+
+# Đường dẫn đến FAISS VectorDB (đảm bảo đường dẫn này chính xác)
+VECTOR_DB_PATH = "E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//RAG//vectorstores//db_faiss_pdf"
+
+def load_faiss_db():
+    """Tải sẵn FAISS DB sử dụng embedding từ HuggingFace."""
+    embedding_model = HuggingFaceEmbeddings(model_name="BAAI/bge-m3")
+    db = FAISS.load_local(VECTOR_DB_PATH, embedding_model, allow_dangerous_deserialization=True)
+    return db
+
+def create_prompt(template):
+    """Tạo PromptTemplate từ chuỗi template."""
+    return PromptTemplate(template=template, input_variables=["context", "question"])
+
+def create_qa_chain(prompt, db):
+    """Tạo chain QA với mô hình OpenAI."""
+    llm = ChatOpenAI(
+        model="gpt-3.5-turbo", 
+        temperature=0.7,  # Điều chỉnh nhiệt độ
+        max_tokens=512,  # Giới hạn số lượng token
+        top_p=0.9,       # Điều chỉnh top-p
+        frequency_penalty=0.5,  # Giảm lặp lại
+        presence_penalty=0.6   # Giảm tái sử dụng từ
+    ) # hoặc sử dụng "gpt-4"
+
+    qa_chain = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=db.as_retriever(search_kwargs={"k": 5}, max_tokens_limit=1024),
+        return_source_documents=True,
+        chain_type_kwargs={'prompt': prompt}
+    )
+    return qa_chain
+
+# ---- Load và khởi tạo các mô hình sẵn bên ngoài API ----
+
+# Tải FAISS DB
+db = load_faiss_db()
+
+# Tạo Prompt với template
+template = """
+<|im_start|>system
+Sử dụng thông tin sau đây để trả lời câu hỏi một cách chi tiết và có giải thích. Nếu bạn không biết câu trả lời, hãy nói không biết, đừng cố tạo ra câu trả lời.
+{context}
+<|im_end|>
+
+<|im_start|>user
+{question}
+<|im_end|>
+<|im_start|>assistant
+"""
+prompt = create_prompt(template)
+
+# Tạo chain QA sử dụng prompt và FAISS DB đã tải
+qa_chain = create_qa_chain(prompt, db)
+
+# ---- APIView sử dụng chain đã được tải sẵn ----
+
+class RAGView(APIView):
+    def post(self, request, *args, **kwargs):
+        # Lấy câu hỏi từ request
+        question = request.data.get("question")
+        if not question:
+            return Response({"error": "Query is required."}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            # Gọi chain đã được khởi tạo sẵn với câu hỏi
+            response = qa_chain.invoke({"query": question})
+            answer = response.get("result", "")
+            source_documents = response.get("source_documents", [])
+            docs = [doc.page_content for doc in source_documents]
+            return Response({
+                "answer": answer,
+                "sources": docs
+            }, status=status.HTTP_200_OK)
+        except requests.exceptions.RequestException as e:
+            return Response({"error": f"Lỗi khi gọi API RAG: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# ====================================================================================
+# ====================================================================================
+#   END RAG
+# ====================================================================================
+# ====================================================================================
