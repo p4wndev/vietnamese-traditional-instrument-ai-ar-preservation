@@ -1,10 +1,23 @@
 <template>
     <div class="chatbot-container">
         <transition name="slide-fade">
-            <div v-if="isOpen" class="chat-window">
+            <div v-if="isOpen" class="chat-window" :class="{ maximized: isMaximized }">
                 <div class="chat-header">
                     <h3>Trợ lý ảo</h3>
-                    <button class="close-btn" @click="closeChat">×</button>
+                    <div class="header-controls">
+                        <button class="resize-btn" @click="toggleMaximize">
+                            <svg v-if="!isMaximized" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+                            </svg>
+                            <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z" />
+                            </svg>
+                        </button>
+                        <button class="close-btn" @click="closeChat"><i class="fa-solid fa-minus"></i></button>
+                    </div>
                 </div>
 
                 <div ref="messagesContainer" class="chat-messages">
@@ -26,12 +39,19 @@
             </div>
         </transition>
 
-        <button class="chat-toggle" :class="{ active: isOpen }" @click="toggleChat">
+        <!-- <button class="chat-toggle" :class="{ active: isOpen }" @click="toggleChat">
             <svg v-if="!isOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path
                     d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
             </svg>
             <span v-else>×</span>
+        </button> -->
+
+        <button class="chat-toggle" v-show="!isOpen" @click="toggleChat">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
+            </svg>
         </button>
     </div>
 </template>
@@ -44,6 +64,7 @@ export default {
     data() {
         return {
             isOpen: false,
+            isMaximized: false,
             newMessage: '',
             messages: [
                 { text: 'Xin chào! Tôi có thể giúp gì cho bạn?', sender: 'bot' }
@@ -62,6 +83,7 @@ export default {
         },
         closeChat() {
             this.isOpen = false
+            this.isMaximized = false
         },
         sendMessage() {
             if (this.newMessage.trim() === '') return
@@ -85,9 +107,8 @@ export default {
             })
         },
         async botResponse(userMessage) {
-            // Logic xử lý phản hồi đơn giản
+            // Logic xử lý phản hồi
             const response = await RagService.ragAnswer(userMessage);
-            console.log("Responses:", response);
             this.messages.push({
                 text: response.answer,
                 sender: 'bot'
@@ -99,9 +120,18 @@ export default {
             if (container) {
                 container.scrollTop = container.scrollHeight
             }
+        },
+        toggleMaximize() {
+            this.isMaximized = !this.isMaximized;
+            this.$nextTick(() => {
+                this.scrollToBottom();
+                if (this.isMaximized) {
+                    this.$refs.messageInput.focus();
+                }
+            });
         }
     }
-}
+} 
 </script>
 
 <style scoped>
@@ -128,7 +158,14 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
+    /* transition: all 0.3s ease; */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1001;
+}
+ 
+/* Đảm bảo nút ẩn hoàn toàn khi không hiển thị */
+.chat-toggle[style*="display: none"] {
+    display: none !important;
 }
 
 .chat-toggle:hover {
@@ -165,6 +202,21 @@ export default {
     flex-direction: column;
     margin-bottom: 15px;
     overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Chế độ phóng to */
+.chat-window.maximized {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    height: 90vh;
+    max-width: 1200px;
+    max-height: 800px;
+    z-index: 2000;
+    margin: 0;
 }
 
 .chat-header {
@@ -182,11 +234,17 @@ export default {
     font-weight: 600;
 }
 
+.header-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.resize-btn,
 .close-btn {
-    background: none;
+    background: rgba(255, 255, 255, 0.2);
     border: none;
     color: white;
-    font-size: 24px;
+    font-size: 18px;
     cursor: pointer;
     padding: 0;
     width: 30px;
@@ -198,8 +256,14 @@ export default {
     transition: background 0.2s;
 }
 
+.resize-btn:hover,
 .close-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.resize-btn svg {
+    width: 16px;
+    height: 16px;
 }
 
 .chat-messages {
@@ -209,6 +273,11 @@ export default {
     background: #f8f9fa;
     display: flex;
     flex-direction: column;
+}
+
+/* Điều chỉnh cho chế độ phóng to */
+.chat-window.maximized .chat-messages {
+    padding: 20px;
 }
 
 .message {
@@ -237,11 +306,24 @@ export default {
     flex-shrink: 0;
 }
 
+/* Điều chỉnh avatar khi phóng to */
+.chat-window.maximized .avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+}
+
 .bubble {
     padding: 12px 15px;
     border-radius: 18px;
     line-height: 1.4;
     font-size: 14px;
+}
+
+/* Điều chỉnh bong bóng khi phóng to */
+.chat-window.maximized .bubble {
+    padding: 15px 20px;
+    font-size: 16px;
 }
 
 .message.user .bubble {
@@ -322,5 +404,10 @@ export default {
 
 .chat-messages::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8;
+}
+
+/* Nền mờ khi phóng to */
+.chat-window.maximized {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 </style>
