@@ -11,17 +11,20 @@
                 <div v-if="loading">Loading...</div>
                 <div v-else-if="error">{{ error }}</div>
             </div>
+            <!-- Preview Image -->
+            <div v-if="imageUrl" class="image-preview">
+                <h4><b>Xem trước ảnh:</b></h4>
+                <img :src="imageUrl" alt="Preview" class="preview-img" />
+            </div>
+
             <hr>
             <div>
                 <ul>
                     <li v-for="(instrument, index) in instruments" :key="index">
                         <p style="font-size:20px;"><b>{{ index + 1 }}. {{ nhac_cu_dt[instrument] }}</b></p>
                         <div v-if="existingModels3d.includes(instrument)">
-                            <Instrument3D 
-                                :key="instrument"    
-                                :one_class_name="instrument"
-                                :modelPath="'/models/' + instrument + '/' + instrument + '.gltf'" 
-                            />
+                            <Instrument3D :key="instrument" :one_class_name="instrument"
+                                :modelPath="'/models/' + instrument + '/' + instrument + '.gltf'" />
                         </div>
                         <div v-else>
                             Hiện tại, mô hình {{ nhac_cu_dt[instrument] }} đang được cập nhật!
@@ -49,7 +52,7 @@ export default {
             selectedFile: null,
             modelPaths: [],
             existingModels3d: ['cong_chieng', 'dan_bau', 'dan_co', 'dan_da', 'dan_nguyet', 'dan_sen', 'dan_tranh', 'dan_ty_ba', 'guitar', 'trong_quan'],
-            nhac_cu_dt:{
+            nhac_cu_dt: {
                 'cong_chieng': 'Cồng chiêng',
                 'dan_bau': 'Đàn bầu',
                 'dan_co': 'Đàn cò',
@@ -64,7 +67,8 @@ export default {
                 'guitar': 'Guitar',
                 'khen': 'Khèn',
                 'trong_quan': 'Trống quân'
-            }
+            },
+            imageUrl: null,
         };
     },
     methods: {
@@ -90,6 +94,28 @@ export default {
                 console.error(error);
             } finally {
                 this.loading = false;
+            }
+        },
+        onFileChange(event) {
+            // Thêm phần xử lý URL
+            if (this.imageUrl) {
+                URL.revokeObjectURL(this.imageUrl);
+            }
+
+            if (event.target.files && event.target.files[0]) {
+                this.selectedFile = event.target.files[0];
+                // Tạo URL để hiển thị preview
+                this.imageUrl = URL.createObjectURL(this.selectedFile);
+            } else {
+                this.selectedFile = null;
+                this.imageUrl = null;
+            }
+        },
+
+        beforeUnmount() {
+            // Dọn dẹp URL khi component bị hủy
+            if (this.imageUrl) {
+                URL.revokeObjectURL(this.imageUrl);
             }
         },
 
@@ -176,4 +202,23 @@ ul {
 li {
     margin-bottom: 20px;
 }
+
+.image-preview {
+    margin-top: 20px;
+}
+
+.preview-img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block; /* Cho phép căn giữa với margin auto */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 </style>

@@ -347,3 +347,94 @@ class RAGView(APIView):
 #   END RAG
 # ====================================================================================
 # ====================================================================================
+import tempfile, os, cv2
+
+class VideoDetectView(APIView):
+    """
+    Optimized version that processes every N seconds
+    """
+    def post(self, request, format=None):
+        video_file = request.FILES.get('video')
+        interval = int(request.data.get('interval', 1))  # Process every N seconds
+        
+        if not video_file:
+            return Response({'error': 'No video file provided.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        @contextlib.contextmanager
+        def disable_weights_only():
+            original_load = torch.load
+            torch.load = lambda f, *args, **kwargs: original_load(f, *args, **{**kwargs, 'weights_only': False})
+            try:
+                yield
+            finally:
+                torch.load = original_load
+
+        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.mp4')
+        try:
+            with open(temp_file.name, 'wb') as f:
+                for chunk in video_file.chunks():
+                    f.write(chunk)
+
+            with disable_weights_only():
+                image_detector = ImageDetectAPI()
+                image_detector.model = YOLO("E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//model_yolo//best.pt")
+
+            cap = cv2.VideoCapture(temp_file.name)
+            fps = cap.get(cv2.CAP_PROP_FPS)
+            if fps <= 0:
+                fps = 30
+                
+            total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+            duration = total_frames / fps
+            
+            results_map = {}
+            
+            # Process every 'interval' seconds
+            current_time = 0
+            while current_time < duration:
+                target_frame = int(current_time * fps)
+                
+                cap.set(cv2.CAP_PROP_POS_FRAMES, target_frame)
+                ret, frame = cap.read()
+                
+                if not ret:
+                    break
+                
+                print(f"Processing time {current_time}s, frame {target_frame}")
+                
+                # Direct detection on frame
+                results = image_detector.model(frame)
+                
+                class_out = []
+                for result in results:
+                    if result.boxes is not None:
+                        for box in result.boxes:
+                            class_id = int(box.cls[0])
+                            class_name = image_detector.model.names[class_id]
+                            class_out.append(class_name)
+                
+                if class_out:
+                    results_map[current_time] = list(set(class_out))
+                    
+                current_time += interval
+
+            cap.release()
+
+            output = []
+            for time_point in sorted(results_map):
+                output.append({
+                    'time_second': time_point,
+                    'detected_instruments': sorted(results_map[time_point])
+                })
+            
+            return Response(output)
+
+        except Exception as e:
+            return Response({'error': f'Error processing video: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+        finally:
+            try:
+                os.remove(temp_file.name)
+            except OSError:
+                pass
+

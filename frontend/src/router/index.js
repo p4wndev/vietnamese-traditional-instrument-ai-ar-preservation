@@ -6,6 +6,11 @@ const routes = [
         name: "main",
         component: () => import("@/views/Prediction.vue"),
     },
+    {
+        path: "/video-detect",
+        name: "video-detect",
+        component: () => import("@/views/VideoDetect.vue"),
+    },
 ];
 
 const router = createRouter({
