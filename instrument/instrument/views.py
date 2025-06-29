@@ -307,7 +307,13 @@ db = load_faiss_db()
 # Tạo Prompt với template
 template = """
 <|im_start|>system
-Sử dụng thông tin sau đây để trả lời câu hỏi một cách chi tiết và có giải thích. Nếu bạn không biết câu trả lời, hãy nói không biết, đừng cố tạo ra câu trả lời.
+Sử dụng thông tin sau đây để trả lời câu hỏi một cách chi tiết, rõ ràng và có giải thích. 
+- Nếu bạn không biết câu trả lời, hãy nói **không biết**, đừng cố tạo ra câu trả lời.
+- Khi trả lời:
+  + Hãy **xuống dòng hợp lý** để dễ đọc.
+  + Dùng **in đậm** cho các tiêu đề hoặc điểm chính.
+  + Nếu có nhiều ý, hãy **liệt kê bằng dấu gạch đầu dòng (-)** hoặc **số thứ tự (1., 2., ...)** khi phù hợp.
+  + Nếu có định nghĩa hoặc thuật ngữ, hãy làm nổi bật chúng.
 {context}
 <|im_end|>
 

@@ -23,7 +23,15 @@
                 <div ref="messagesContainer" class="chat-messages">
                     <div v-for="(msg, index) in messages" :key="index" :class="['message', msg.sender]">
                         <div class="avatar" v-if="msg.sender === 'bot'">🤖</div>
-                        <div class="bubble">{{ msg.text }}</div>
+                        <!-- <div class="bubble">{{ msg.text }}</div> -->
+                        <div class="bubble" v-if="msg.sender === 'bot'" v-html="renderMarkdown(msg.text)"></div>
+                        <div class="bubble" v-else>{{ msg.text }}</div>
+                    </div>
+
+                    <!-- Vòng quay hoặc dấu ba chấm hiển thị khi đang chờ -->
+                    <div v-if="isLoading" class="loading-indicator">
+                        <div class="circle"></div> <!-- Hình tròn quay -->
+                        <span>Vui lòng chờ trong giây lát...</span>
                     </div>
                 </div>
 
@@ -50,6 +58,7 @@
 
 <script>
 import RagService from "../services/rag.service";
+import { marked } from 'marked';
 
 export default {
     name: 'ChatbotWidget',
@@ -60,10 +69,16 @@ export default {
             newMessage: '',
             messages: [
                 { text: 'Xin chào! Tôi có thể giúp gì cho bạn?', sender: 'bot' }
-            ]
+            ],
+            isLoading: false,
         }
     },
     methods: {
+        renderMarkdown(text) {
+            // chuyển \\n thành newline thật rồi parse Markdown
+            const withNewlines = text.replace(/\\n/g, '\n');
+            return marked(withNewlines);
+        },
         toggleChat() {
             this.isOpen = !this.isOpen
             if (this.isOpen) {
@@ -79,6 +94,8 @@ export default {
         },
         sendMessage() {
             if (this.newMessage.trim() === '') return
+
+            this.isLoading = true;
 
             // Thêm tin nhắn người dùng
             this.messages.push({
@@ -101,6 +118,7 @@ export default {
         async botResponse(userMessage) {
             // Logic xử lý phản hồi
             const response = await RagService.ragAnswer(userMessage);
+            this.isLoading = false;
             this.messages.push({
                 text: response.answer,
                 sender: 'bot'
@@ -154,7 +172,7 @@ export default {
     transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 1001;
 }
- 
+
 /* Đảm bảo nút ẩn hoàn toàn khi không hiển thị */
 .chat-toggle[style*="display: none"] {
     display: none !important;
@@ -401,5 +419,43 @@ export default {
 /* Nền mờ khi phóng to */
 .chat-window.maximized {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.loading-indicator {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    color: #999;
+    font-style: italic;
+}
+
+/* Tạo vòng tròn quay */
+.circle {
+    margin-right: 5px;
+    border: 4px solid #f3f3f3;
+    /* Màu nền của vòng tròn */
+    border-top: 4px solid #4caf50;
+    /* Màu của phần quay */
+    border-radius: 50%;
+    /* Làm cho thành hình tròn */
+    width: 20px;
+    /* Kích thước vòng tròn */
+    height: 20px;
+    /* Kích thước vòng tròn */
+    animation: spin 1s linear infinite;
+    /* Quay liên tục */
+}
+
+/* Hoạt ảnh quay vòng tròn */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 </style>

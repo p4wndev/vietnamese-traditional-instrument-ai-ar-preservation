@@ -1,12 +1,13 @@
 <template>
     <nav class="navbar navbar-expand-lg">
         <div class="navbar-brand-container d-flex justify-content-between w-100 container">
-            <a href="/" class="navbar-brand">
+            <router-link to="/" class="navbar-brand">
                 <img src="/logo.png" alt="" class="logo">
-            </a>
+            </router-link>
             <div class="ms-auto navbar-nav">
-                <li class="nav-item"><b>Trang chủ</b></li>
-                <li class="nav-item"><b>Liên hệ</b></li>
+                <router-link to="/" class="nav-item nav-link"><b>Trang chủ</b></router-link>
+                <router-link to="/video-detect" class="nav-item nav-link"><b>Video Annotation</b></router-link>
+                <router-link to="/contact" class="nav-item nav-link"><b>Liên hệ</b></router-link>
             </div>
         </div>
     </nav>
@@ -22,8 +23,7 @@ export default {
 </script>
 
 <style scoped>
-
-.logo{
+.logo {
     width: 100px;
     height: auto;
 }
