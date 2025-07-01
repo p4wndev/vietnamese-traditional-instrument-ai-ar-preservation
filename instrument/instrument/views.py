@@ -353,94 +353,271 @@ class RAGView(APIView):
 #   END RAG
 # ====================================================================================
 # ====================================================================================
-import tempfile, os, cv2
+
+import os
+import cv2
+import contextlib
+import torch
+import numpy as np
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from ultralytics import YOLO
+# from moviepy.editor import VideoFileClip, AudioFileClip
+# import moviepy    
+
 
 class VideoDetectView(APIView):
-    """
-    Optimized version that processes every N seconds
-    """
-    def post(self, request, format=None):
+
+    @contextlib.contextmanager
+    def disable_weights_only(self):
+        """Temporarily disable weights_only loading restriction"""
+        original_load = torch.load
+        torch.load = lambda f, *args, **kwargs: original_load(f, *args, **{**kwargs, 'weights_only': False})
+        try:
+            yield
+        finally:
+            torch.load = original_load
+
+    def post(self, request, *args, **kwargs):
         video_file = request.FILES.get('video')
-        interval = int(request.data.get('interval', 1))  # Process every N seconds
+        interval = int(request.data.get('interval', 1))  # Get interval with default 1 second
         
         if not video_file:
-            return Response({'error': 'No video file provided.'}, status=status.HTTP_400_BAD_REQUEST)
-
-        @contextlib.contextmanager
-        def disable_weights_only():
-            original_load = torch.load
-            torch.load = lambda f, *args, **kwargs: original_load(f, *args, **{**kwargs, 'weights_only': False})
-            try:
-                yield
-            finally:
-                torch.load = original_load
-
-        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.mp4')
+            return Response({"error": "No video provided"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Validate interval
+        if interval <= 0:
+            interval = 1
+        
+        # Save temporary video
+        temp_path = 'temp_video.mp4'
+        with open(temp_path, 'wb+') as destination:
+            for chunk in video_file.chunks():
+                destination.write(chunk)
+        
         try:
-            with open(temp_file.name, 'wb') as f:
-                for chunk in video_file.chunks():
-                    f.write(chunk)
-
-            with disable_weights_only():
-                image_detector = ImageDetectAPI()
-                image_detector.model = YOLO("E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//model_yolo//best.pt")
-
-            cap = cv2.VideoCapture(temp_file.name)
-            fps = cap.get(cv2.CAP_PROP_FPS)
-            if fps <= 0:
-                fps = 30
-                
-            total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-            duration = total_frames / fps
-            
-            results_map = {}
-            
-            # Process every 'interval' seconds
-            current_time = 0
-            while current_time < duration:
-                target_frame = int(current_time * fps)
-                
-                cap.set(cv2.CAP_PROP_POS_FRAMES, target_frame)
-                ret, frame = cap.read()
-                
-                if not ret:
-                    break
-                
-                print(f"Processing time {current_time}s, frame {target_frame}")
-                
-                # Direct detection on frame
-                results = image_detector.model(frame)
-                
-                class_out = []
-                for result in results:
-                    if result.boxes is not None:
-                        for box in result.boxes:
-                            class_id = int(box.cls[0])
-                            class_name = image_detector.model.names[class_id]
-                            class_out.append(class_name)
-                
-                if class_out:
-                    results_map[current_time] = list(set(class_out))
-                    
-                current_time += interval
-
-            cap.release()
-
-            output = []
-            for time_point in sorted(results_map):
-                output.append({
-                    'time_second': time_point,
-                    'detected_instruments': sorted(results_map[time_point])
-                })
-            
-            return Response(output)
-
+            # Process video and get detection results
+            output_video_path, time_detections = self.process_video(temp_path, interval)
         except Exception as e:
-            return Response({'error': f'Error processing video: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            
+            return Response({"error": f"Video processing failed: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         finally:
-            try:
-                os.remove(temp_file.name)
-            except OSError:
-                pass
+            # Clean up temporary file
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
+        
+        # Return video URL and detection results
+        video_url = request.build_absolute_uri(f'/static/predict/{os.path.basename(output_video_path)}')
+        return Response({
+            'video_url': video_url,
+            'time_detections': time_detections
+        })
+        # try:
+        #     # Process video and get detection results
+        #     output_video_path, time_detections = self.process_video(temp_path, interval)
+            
+        #     # Thêm âm thanh vào video đã xử lý
+        #     final_output_path = self.add_audio_to_video(temp_path, output_video_path)
+        # except Exception as e:
+        #     return Response({"error": f"Video processing failed: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        # finally:
+        #     if os.path.exists(temp_path):
+        #         os.remove(temp_path)
+        
+        # # Sử dụng video đã có âm thanh
+        # video_url = request.build_absolute_uri(f'/static/predict/{os.path.basename(final_output_path)}')
+        # return Response({
+        #     'video_url': video_url,
+        #     'time_detections': time_detections
+        # })
 
+    # def add_audio_to_video(self, original_video_path, processed_video_path):
+    #     """Thêm âm thanh từ video gốc vào video đã xử lý"""
+    #     try:
+    #         # Tạo tên file mới cho video có âm thanh
+    #         final_path = processed_video_path.replace('.mp4', '_with_audio.mp4')
+            
+    #         # Lấy âm thanh từ video gốc
+    #         audio_clip = AudioFileClip(original_video_path)
+            
+    #         # Lấy hình ảnh từ video đã xử lý
+    #         video_clip = VideoFileClip(processed_video_path)
+            
+    #         # Kết hợp âm thanh với hình ảnh
+    #         final_clip = video_clip.set_audio(audio_clip)
+    #         final_clip.write_videofile(
+    #             final_path,
+    #             codec='libx264',
+    #             audio_codec='aac',
+    #             fps=video_clip.fps
+    #         )
+            
+    #         # Đóng các clip để giải phóng tài nguyên
+    #         audio_clip.close()
+    #         video_clip.close()
+    #         final_clip.close()
+            
+    #         # Xóa video không có âm thanh
+    #         os.remove(processed_video_path)
+            
+    #         return final_path
+    #     except Exception as e:
+    #         print(f"Error adding audio: {e}")
+    #         # Nếu không thêm được âm thanh, trả về video gốc
+    #         return processed_video_path
+        
+
+    def process_video(self, input_path, interval):
+        """Process video frame-by-frame with YOLO detection and collect time-based results"""
+        # Create output directory
+        os.makedirs('instrument/static/predict', exist_ok=True)
+        output_path = 'instrument/static/predict/output_video.mp4'
+        
+        # Load YOLO model
+        with self.disable_weights_only():
+            model = YOLO("E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//model_yolo//best.pt")
+        
+        # Open input video
+        cap = cv2.VideoCapture(input_path)
+        if not cap.isOpened():
+            raise Exception("Cannot open input video file")
+        
+        # Get video properties
+        frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        print("fps CÓ GIÁ TRỊ LÀ: ", fps)
+        if fps <= 0:
+            fps = 30  # Default FPS if invalid
+        
+        # Use a more compatible codec
+        fourcc = cv2.VideoWriter_fourcc(*'avc1')  # H.264 codec
+        if fourcc == 0:
+            # Fallback to MP4V if H.264 not available
+            fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+            
+        out = cv2.VideoWriter(output_path, fourcc, fps, (frame_width, frame_height))
+        if not out.isOpened():
+            raise Exception("Could not open video writer")
+        
+        # Initialize time-based detection tracking
+        results_map = {}
+        next_time = 0.0
+        frame_count = 0
+        
+        # Process each frame
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret:
+                break
+                
+            # Calculate current time in seconds
+            current_time = frame_count / fps
+            
+            # Run YOLO detection
+            results = model.predict(source=frame)
+            result0 = results[0]
+            
+            # Capture detections at specified intervals
+            if current_time >= next_time:
+                # Extract unique class names
+                class_out = []
+                if result0.boxes is not None:
+                    for box in result0.boxes:
+                        class_id = int(box.cls[0])
+                        class_name = model.names[class_id]
+                        class_out.append(class_name)
+                
+                # Store results if instruments detected
+                class_out = list(set(class_out))
+                if class_out:
+                    results_map[next_time] = class_out
+                
+                # Move to next interval
+                next_time += interval
+            
+            # Annotate frame with bounding boxes
+            annotated_frame = self.annotate_frame(frame, result0)
+            
+            # Ensure frame is in correct format
+            if annotated_frame.dtype != np.uint8:
+                annotated_frame = annotated_frame.astype(np.uint8)
+            
+            # Write processed frame
+            out.write(annotated_frame)
+            frame_count += 1
+        
+        # Release resources
+        cap.release()
+        out.release()
+        
+        # Verify output video
+        if not self.verify_video(output_path):
+            raise Exception("Output video is corrupted or empty")
+        
+        # Prepare time-based detection results
+        time_detections = []
+        for time_point in sorted(results_map.keys()):
+            time_detections.append({
+                'time_second': time_point,
+                'detected_instruments': sorted(results_map[time_point])
+            })
+        
+        print(f"Video processing complete. Saved to: {output_path}")
+        return output_path, time_detections
+
+    def verify_video(self, video_path):
+        """Check if video is playable"""
+        cap = cv2.VideoCapture(video_path)
+        if not cap.isOpened():
+            return False
+        ret, frame = cap.read()
+        cap.release()
+        return ret
+
+    def annotate_frame(self, frame, results):
+        """Draw bounding boxes and labels on frame"""
+        # Extract detection results
+        if results.boxes is None:
+            return frame
+            
+        boxes = results.boxes.xyxy.cpu().numpy()
+        confidences = results.boxes.conf.cpu().numpy()
+        class_ids = results.boxes.cls.cpu().numpy().astype(int)
+        
+        # Get class names from YOLO model
+        class_names = results.names
+        
+        # Draw each detection
+        for box, conf, cls_id in zip(boxes, confidences, class_ids):
+            x1, y1, x2, y2 = map(int, box)
+            
+            # Draw bounding box
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            
+            # Create label with class name and confidence
+            label = f"{class_names[cls_id]} {conf:.2f}"
+            
+            # Draw label background
+            (label_width, label_height), _ = cv2.getTextSize(
+                label, cv2.FONT_HERSHEY_SIMPLEX, 0.6, 1)
+            cv2.rectangle(
+                frame, 
+                (x1, y1 - label_height - 10),
+                (x1 + label_width, y1),
+                (0, 255, 0),
+                -1
+            )
+            
+            # Draw label text
+            cv2.putText(
+                frame, 
+                label, 
+                (x1, y1 - 10), 
+                cv2.FONT_HERSHEY_SIMPLEX, 
+                0.6, 
+                (0, 0, 0), 
+                1
+            )
+        
+        return frame

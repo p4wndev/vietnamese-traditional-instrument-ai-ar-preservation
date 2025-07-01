@@ -19,6 +19,7 @@
     <!-- Detection Results -->
     <div v-if="results.length" class="mt-6 w-full">
       <h3 class="text-lg font-semibold mb-2 text-left mt-2">Detection Results</h3>
+      <video :src="videoOutputUrl" controls class="video-preview" ref="videoPlayer"></video>
       <ul class="results-container">
         <li v-for="item in results" :key="item.time_second" class="result-item">
           <span class="font-medium">Giây thứ {{ item.time_second }}:</span>
@@ -36,14 +37,15 @@ export default {
   data() {
     return {
       videoFile: null,
-      videoUrl: null,   // Lưu trữ URL để hiển thị video
-      results: []
+      videoUrl: null,
+      results: [],
+      videoOutputUrl: null,
     }
   },
   methods: {
     formatInstruments(instruments) {
-    const instrumentNames = {
-      'cong_chieng': 'cồng chiêng',
+      const instrumentNames = {
+        'cong_chieng': 'cồng chiêng',
         'dan_bau': 'đàn bầu',
         'dan_co': 'đàn cò',
         'dan_da': 'đàn đá',
@@ -57,10 +59,10 @@ export default {
         'guitar': 'guitar',
         'khen': 'khèn',
         'trong_quan': 'trống quân'
-    };
-    
-    return instruments.map(instr => instrumentNames[instr] || instr).join(', ');
-  },
+      };
+
+      return instruments.map(instr => instrumentNames[instr] || instr).join(', ');
+    },
     onFileChange(event) {
       // Xóa URL cũ nếu có
       if (this.videoUrl) {
@@ -84,7 +86,8 @@ export default {
 
       try {
         const response = await VideoDetectService.videoDetect(form)
-        this.results = response.data
+        this.results = response.data.time_detections;
+        this.videoOutputUrl = response.data.video_url;
       } catch (error) {
         console.error(error)
         alert('Upload or detection failed.')
