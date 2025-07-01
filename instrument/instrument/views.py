@@ -363,8 +363,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from ultralytics import YOLO
-# from moviepy.editor import VideoFileClip, AudioFileClip
-# import moviepy    
+from moviepy import VideoFileClip, AudioFileClip
+import moviepy    
 
 
 class VideoDetectView(APIView):
@@ -399,72 +399,55 @@ class VideoDetectView(APIView):
         try:
             # Process video and get detection results
             output_video_path, time_detections = self.process_video(temp_path, interval)
+            # Thêm âm thanh vào video đã xử lý
+            final_output_path = self.add_audio_to_video(temp_path, output_video_path)
         except Exception as e:
             return Response({"error": f"Video processing failed: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         finally:
-            # Clean up temporary file
             if os.path.exists(temp_path):
                 os.remove(temp_path)
         
-        # Return video URL and detection results
-        video_url = request.build_absolute_uri(f'/static/predict/{os.path.basename(output_video_path)}')
+        # Sử dụng video đã có âm thanh
+        video_url = request.build_absolute_uri(f'/static/predict/{os.path.basename(final_output_path)}')
         return Response({
             'video_url': video_url,
             'time_detections': time_detections
         })
-        # try:
-        #     # Process video and get detection results
-        #     output_video_path, time_detections = self.process_video(temp_path, interval)
-            
-        #     # Thêm âm thanh vào video đã xử lý
-        #     final_output_path = self.add_audio_to_video(temp_path, output_video_path)
-        # except Exception as e:
-        #     return Response({"error": f"Video processing failed: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        # finally:
-        #     if os.path.exists(temp_path):
-        #         os.remove(temp_path)
-        
-        # # Sử dụng video đã có âm thanh
-        # video_url = request.build_absolute_uri(f'/static/predict/{os.path.basename(final_output_path)}')
-        # return Response({
-        #     'video_url': video_url,
-        #     'time_detections': time_detections
-        # })
 
-    # def add_audio_to_video(self, original_video_path, processed_video_path):
-    #     """Thêm âm thanh từ video gốc vào video đã xử lý"""
-    #     try:
-    #         # Tạo tên file mới cho video có âm thanh
-    #         final_path = processed_video_path.replace('.mp4', '_with_audio.mp4')
+    def add_audio_to_video(self, original_video_path, processed_video_path):
+        """Thêm âm thanh từ video gốc vào video đã xử lý"""
+        try:
+            # Tạo tên file mới cho video có âm thanh
+            final_path = processed_video_path.replace('.mp4', '_with_audio.mp4')
             
-    #         # Lấy âm thanh từ video gốc
-    #         audio_clip = AudioFileClip(original_video_path)
+            # Lấy âm thanh từ video gốc
+            audio_clip = AudioFileClip(original_video_path)
             
-    #         # Lấy hình ảnh từ video đã xử lý
-    #         video_clip = VideoFileClip(processed_video_path)
+            # Lấy hình ảnh từ video đã xử lý
+            video_clip = VideoFileClip(processed_video_path)
             
-    #         # Kết hợp âm thanh với hình ảnh
-    #         final_clip = video_clip.set_audio(audio_clip)
-    #         final_clip.write_videofile(
-    #             final_path,
-    #             codec='libx264',
-    #             audio_codec='aac',
-    #             fps=video_clip.fps
-    #         )
+            # Kết hợp âm thanh với hình ảnh
+            final_clip = video_clip.with_audio(audio_clip)
+            final_clip.write_videofile(
+                final_path,
+                codec='libx264',
+                audio_codec='aac',
+                fps=video_clip.fps
+            )
             
-    #         # Đóng các clip để giải phóng tài nguyên
-    #         audio_clip.close()
-    #         video_clip.close()
-    #         final_clip.close()
+            # Đóng các clip để giải phóng tài nguyên
+            audio_clip.close()
+            video_clip.close()
+            final_clip.close()
             
-    #         # Xóa video không có âm thanh
-    #         os.remove(processed_video_path)
+            # Xóa video không có âm thanh
+            os.remove(processed_video_path)
             
-    #         return final_path
-    #     except Exception as e:
-    #         print(f"Error adding audio: {e}")
-    #         # Nếu không thêm được âm thanh, trả về video gốc
-    #         return processed_video_path
+            return final_path
+        except Exception as e:
+            print(f"Error adding audio: {e}")
+            # Nếu không thêm được âm thanh, trả về video gốc
+            return processed_video_path
         
 
     def process_video(self, input_path, interval):
