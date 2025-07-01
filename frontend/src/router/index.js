@@ -11,6 +11,11 @@ const routes = [
         name: "video-detect",
         component: () => import("@/views/VideoDetect.vue"),
     },
+    {
+        path: "/contact-us",
+        name: "contact-us",
+        component: () => import("@/views/ContactUs.vue"),
+    },
 ];
 
 const router = createRouter({

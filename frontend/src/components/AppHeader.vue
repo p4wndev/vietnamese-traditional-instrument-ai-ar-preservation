@@ -7,7 +7,7 @@
             <div class="ms-auto navbar-nav">
                 <router-link to="/" class="nav-item nav-link"><b>Trang chủ</b></router-link>
                 <router-link to="/video-detect" class="nav-item nav-link"><b>Video Annotation</b></router-link>
-                <router-link to="/contact" class="nav-item nav-link"><b>Liên hệ</b></router-link>
+                <router-link to="/contact-us" class="nav-item nav-link"><b>Liên hệ</b></router-link>
             </div>
         </div>
     </nav>
@@ -27,7 +27,19 @@ export default {
     width: 100px;
     height: auto;
 }
+html, body {
+    height: 100%;
+    margin: 0;
+}
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* căn giữa theo chiều dọc */
+    align-items: center;     /* căn giữa theo chiều ngang */
+    height: 100vh;           /* 100% chiều cao viewport */
+    padding: 20px;
+}
 .navbar {
     background-color: #fff;
     height: 80px;
