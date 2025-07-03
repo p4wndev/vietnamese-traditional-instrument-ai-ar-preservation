@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <div class="overlay">
             <h3 class="introduce-infor">ViTIP: AI-Powered Vietnamese Traditional Instrument Preservation System</h3>
             <p class="description">The ViTIP project uses artificial intelligence to preserve Vietnam's traditional
                 musical
@@ -21,9 +20,6 @@
                 <li><a href="https://github.com/jerosiet">Yen-Thi Nguyen Thi</a></li>
                 <li><a href="https://github.com/imxuan03">Thanh-Xuan Nguyen</a></li>
             </ul>
-
-        </div>
-
     </div>
 </template>
 
@@ -45,11 +41,6 @@ export default {
 
 <style scoped>
 html,
-body {
-    height: 100%;
-    margin: 0;
-}
-
 .container {
     display: flex;
     flex-direction: column;

@@ -27,17 +27,13 @@ export default {
     width: 100px;
     height: auto;
 }
-html, body {
-    height: 100%;
-    margin: 0;
-}
 
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center; /* căn giữa theo chiều dọc */
     align-items: center;     /* căn giữa theo chiều ngang */
-    height: 100vh;           /* 100% chiều cao viewport */
+    /* height: 100vh;          */
     padding: 20px;
 }
 .navbar {
