@@ -14,45 +14,34 @@ import torch
 import contextlib
 
 def create_lenet_model(input_shape=(64, 64, 3), num_classes=14):
-    model = tf.keras.Sequential([
-        # Lớp Convolution đầu tiên
-        tf.keras.layers.Conv2D(
-            filters=32, 
-            kernel_size=(5, 5), 
-            padding='same', 
-            activation='relu', 
-            input_shape=input_shape,
-            name='conv2d_1'
-        ),
-        
-        # Lớp Max Pooling
-        tf.keras.layers.MaxPooling2D(pool_size=(2, 2), strides=2),
-        
-        # Lớp Convolution thứ hai
-        tf.keras.layers.Conv2D(
-            filters=48, 
-            kernel_size=(5, 5), 
-            padding='valid', 
-            activation='relu',
-            name='conv2d_2'
-        ),
-        
-        # Lớp Max Pooling thứ hai
-        tf.keras.layers.MaxPooling2D(pool_size=(2, 2), strides=2),
-        
-        # Làm phẳng đầu vào
-        tf.keras.layers.Flatten(),
-        
-        # Lớp Dense 256
-        tf.keras.layers.Dense(256, activation='relu'),
-        
-        # Lớp Dense 84
-        tf.keras.layers.Dense(84, activation='relu'),
-        
-        # Lớp đầu ra
-        tf.keras.layers.Dense(num_classes, activation='softmax')
-    ])
+    model = tf.keras.Sequential()
+
+    # C1 Convolution Layer
+    model.add(tf.keras.layers.Conv2D(filters=6, strides=(1,1), kernel_size=(5,5), activation='tanh', input_shape=input_shape))
+
+    # S2 SubSampling Layer
+    model.add(tf.keras.layers.AveragePooling2D(pool_size=(2,2), strides=(2,2)))
+
+    # C3 Convolution Layer
+    model.add(tf.keras.layers.Conv2D(filters=6, strides=(1,1), kernel_size=(5,5), activation='tanh'))
+
+    # S4 SubSampling Layer
+    model.add(tf.keras.layers.AveragePooling2D(pool_size=(2,2), strides=(2,2)))
+
+    # C5 Fully Connected Layer
+    model.add(tf.keras.layers.Dense(units=120, activation='tanh'))
+
+    # Flatten the output so that we can connect it with the fully connected layers by converting it into a 1D Array
+    model.add(tf.keras.layers.Flatten())
+
+    # FC6 Fully Connected Layers
+    model.add(tf.keras.layers.Dense(units=84, activation='tanh'))
+
+    # Output Layer
+    model.add(tf.keras.layers.Dense(units=num_classes, activation='softmax'))
+
     return model
+
 
 class InstrumentList(APIView):
     def get(self, request, *args, **kwargs):
@@ -82,7 +71,6 @@ class ImageDetectAPI(APIView):
         return Response({'output': output, "cl_o": cl_out})
 
     def detect_img(self, path_img):
-        # Context manager để tạm thời vô hiệu hóa weights_only
         @contextlib.contextmanager
         def disable_weights_only():
             original_load = torch.load
@@ -97,28 +85,65 @@ class ImageDetectAPI(APIView):
             model = YOLO("E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//model_yolo//best.pt")
         
         img_input = cv2.imread(path_img)
-        rs = model.predict(source=img_input)
-        rs = rs[0]
-        i = 0
+        if img_input is None:
+            print(f"Không thể đọc ảnh: {path_img}")
+            return 0, []
+        
+        # Lưu kích thước gốc của ảnh
+        orig_h, orig_w = img_input.shape[:2]
+        
+        results = model.predict(source=img_input)
+        results = results[0]
+        
         listImg = []
         class_out = []
-        for ob in rs.boxes:
-            box = ob.xyxy[0].tolist()
-            box = [round(x) for x in box]
-            x1, y1, x2, y2 = box
-            img_cut = img_input[y1:y2, x1:x2]
-            listImg.append(img_cut)
-            os.makedirs('instrument/static/predict', exist_ok=True)
-            cv2.imwrite(f'instrument/static/predict/image_{i:03d}.jpg', img_cut)
-            i += 1
-
+        
+        # Kiểm tra nếu không có mask nào được phát hiện
+        if results.masks is None:
+            print("Không có mask nào được phát hiện trong ảnh")
+            return 0, []
+        
+        masks = results.masks.data.cpu().numpy()
+        classes = results.boxes.cls.cpu().numpy().astype(int)
+        
+        os.makedirs('instrument/static/predict', exist_ok=True)
+        
+        # Cho mỗi đối tượng
+        for i, mask in enumerate(masks):
+            cls_id = classes[i]
+            
+            # QUAN TRỌNG: Resize mask về kích thước ảnh gốc
+            mask_resized = cv2.resize(mask, (orig_w, orig_h), interpolation=cv2.INTER_NEAREST)
+            
+            # Tạo binary mask từ mask đã resize
+            binary_mask = (mask_resized * 255).astype(np.uint8)
+            
+            # Áp dụng mask lên ảnh gốc
+            masked_img = cv2.bitwise_and(img_input, img_input, mask=binary_mask)
+            
+            # Tìm bounding box nhỏ nhất chứa mask
+            ys, xs = np.where(binary_mask > 0)
+            if len(ys) == 0 or len(xs) == 0:
+                print(f"Không tìm thấy pixel mask cho đối tượng {i}")
+                continue
+                
+            y1, y2 = ys.min(), ys.max()
+            x1, x2 = xs.min(), xs.max()
+            crop = masked_img[y1:y2+1, x1:x2+1]
+            
+            # Lưu ảnh đã cắt (đổi thành .jpg)
+            listImg.append(crop)
+            cv2.imwrite(f'instrument/static/predict/image_{i:03d}.jpg', crop)
+        
+        # Dự đoán lớp cho từng ảnh đã cắt
         for t in range(len(listImg)):
-            a = cv2.cvtColor(listImg[t], cv2.COLOR_BGR2RGB)  # Sửa từ RGB2BGR thành BGR2RGB
-            label = self.predict_lenet(a)
+            # Không cần chuyển đổi màu vì OpenCV mặc định là BGR
+            # Để nguyên img_cut ở dạng BGR vì model LeNet cần 3 kênh màu
+            label = self.predict_lenet(listImg[t])
             print(f"Label for image_{t:03d}: {label}")
             class_out.append(label)
-
-        return i, class_out
+        
+        return len(listImg), class_out
 
     def predict_lenet(self, image):
         categories = ['cong_chieng', 'dan_bau', 'dan_co', 'dan_da', 'dan_day', 'dan_nguyet', 
@@ -129,7 +154,7 @@ class ImageDetectAPI(APIView):
         model_lenet = create_lenet_model(input_shape=(64, 64, 3), num_classes=14)
         
         # Load weights từ file
-        model_lenet.load_weights("E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//model_lenet//lenet_model30.h5")
+        model_lenet.load_weights("E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//model_lenet//lenet5_model_300.h5")
         
         # Tiền xử lý ảnh
         img_input = cv2.resize(image, (64, 64))
@@ -141,6 +166,7 @@ class ImageDetectAPI(APIView):
         # Thực hiện dự đoán
         pred = model_lenet.predict(img_batch)
         res = argmax(pred, axis=1)
+        print(f"Predicted class index: {res[0]}")
         return categories[res[0]]
 
 class OntologyInfoView(APIView):
@@ -365,6 +391,7 @@ from rest_framework import status
 from ultralytics import YOLO
 from moviepy import VideoFileClip, AudioFileClip
 import moviepy    
+import subprocess as sp
 
 
 class VideoDetectView(APIView):
@@ -452,7 +479,6 @@ class VideoDetectView(APIView):
 
     def process_video(self, input_path, interval):
         """Process video frame-by-frame with YOLO detection and collect time-based results"""
-        # Create output directory
         os.makedirs('instrument/static/predict', exist_ok=True)
         output_path = 'instrument/static/predict/output_video.mp4'
         
@@ -460,28 +486,32 @@ class VideoDetectView(APIView):
         with self.disable_weights_only():
             model = YOLO("E://NCKH_Instrument//CODE//instrument//instrument//instrument//model//model_yolo//best.pt")
         
-        # Open input video
         cap = cv2.VideoCapture(input_path)
         if not cap.isOpened():
             raise Exception("Cannot open input video file")
         
-        # Get video properties
         frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         fps = cap.get(cv2.CAP_PROP_FPS)
-        print("fps CÓ GIÁ TRỊ LÀ: ", fps)
-        if fps <= 0:
-            fps = 30  # Default FPS if invalid
+        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         
-        # Use a more compatible codec
-        fourcc = cv2.VideoWriter_fourcc(*'avc1')  # H.264 codec
-        if fourcc == 0:
-            # Fallback to MP4V if H.264 not available
-            fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-            
+        print(f"Video properties: {frame_width}x{frame_height}, FPS: {fps}, Frames: {total_frames}")
+        
+        if fps <= 0:
+            fps = 30
+            print(f"Warning: Invalid FPS, using default {fps}")
+        
+        # Sử dụng OpenCV với codec mặc định
+        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
         out = cv2.VideoWriter(output_path, fourcc, fps, (frame_width, frame_height))
+        
         if not out.isOpened():
-            raise Exception("Could not open video writer")
+            print("Warning: Could not open video writer, trying alternative codec")
+            fourcc = cv2.VideoWriter_fourcc(*'avc1')
+            out = cv2.VideoWriter(output_path, fourcc, fps, (frame_width, frame_height))
+            
+        if not out.isOpened():
+            raise Exception("Could not open video writer with any codec")
         
         # Initialize time-based detection tracking
         results_map = {}
@@ -498,18 +528,21 @@ class VideoDetectView(APIView):
             current_time = frame_count / fps
             
             # Run YOLO detection
-            results = model.predict(source=frame)
-            result0 = results[0]
+            try:
+                results = model.predict(source=frame)
+                result0 = results[0]
+            except Exception as e:
+                print(f"YOLO prediction error: {e}")
+                result0 = None
             
             # Capture detections at specified intervals
-            if current_time >= next_time:
+            if current_time >= next_time and result0 and result0.boxes is not None:
                 # Extract unique class names
                 class_out = []
-                if result0.boxes is not None:
-                    for box in result0.boxes:
-                        class_id = int(box.cls[0])
-                        class_name = model.names[class_id]
-                        class_out.append(class_name)
+                for box in result0.boxes:
+                    class_id = int(box.cls[0])
+                    class_name = model.names[class_id]
+                    class_out.append(class_name)
                 
                 # Store results if instruments detected
                 class_out = list(set(class_out))
@@ -520,23 +553,27 @@ class VideoDetectView(APIView):
                 next_time += interval
             
             # Annotate frame with bounding boxes
-            annotated_frame = self.annotate_frame(frame, result0)
-            
-            # Ensure frame is in correct format
-            if annotated_frame.dtype != np.uint8:
-                annotated_frame = annotated_frame.astype(np.uint8)
+            if result0:
+                try:
+                    annotated_frame = self.annotate_frame(frame.copy(), result0)
+                except Exception as e:
+                    print(f"Annotation error: {e}")
+                    annotated_frame = frame
+            else:
+                annotated_frame = frame
             
             # Write processed frame
             out.write(annotated_frame)
             frame_count += 1
+            
+            # Hiển thị tiến trình
+            if frame_count % 100 == 0:
+                print(f"Processed {frame_count}/{total_frames} frames ({frame_count/total_frames*100:.1f}%)")
         
         # Release resources
         cap.release()
         out.release()
-        
-        # Verify output video
-        if not self.verify_video(output_path):
-            raise Exception("Output video is corrupted or empty")
+        print(f"Video saved to: {output_path}")
         
         # Prepare time-based detection results
         time_detections = []
@@ -546,7 +583,6 @@ class VideoDetectView(APIView):
                 'detected_instruments': sorted(results_map[time_point])
             })
         
-        print(f"Video processing complete. Saved to: {output_path}")
         return output_path, time_detections
 
     def verify_video(self, video_path):
@@ -559,40 +595,61 @@ class VideoDetectView(APIView):
         return ret
 
     def annotate_frame(self, frame, results):
-        """Draw bounding boxes and labels on frame"""
-        # Extract detection results
-        if results.boxes is None:
+        """Draw segmentation masks and labels on frame"""
+        # Kiểm tra nếu không có detection
+        if results.boxes is None or results.masks is None:
             return frame
             
         boxes = results.boxes.xyxy.cpu().numpy()
         confidences = results.boxes.conf.cpu().numpy()
         class_ids = results.boxes.cls.cpu().numpy().astype(int)
+        masks = results.masks.data.cpu().numpy()
         
-        # Get class names from YOLO model
+        # Lấy tên class từ model
         class_names = results.names
         
-        # Draw each detection
-        for box, conf, cls_id in zip(boxes, confidences, class_ids):
+        # Tạo overlay để vẽ mask
+        overlay = frame.copy()
+        alpha = 0.5  # Độ trong suốt
+        
+        # Duyệt qua từng detection
+        for i, (box, conf, cls_id, mask) in enumerate(zip(boxes, confidences, class_ids, masks)):
+            # Resize mask về kích thước gốc
+            mask_resized = cv2.resize(mask, (frame.shape[1], frame.shape[0]))
+            
+            # Tạo mask nhị phân
+            binary_mask = (mask_resized > 0.5).astype(np.uint8)
+            
+            # Tạo màu ngẫu nhiên cho mỗi class (giữ nguyên màu giữa các frame)
+            color = self.generate_color(cls_id)
+            
+            # 1. Vẽ segmentation mask
+            # Tạo ảnh màu từ mask
+            colored_mask = np.zeros_like(frame)
+            colored_mask[:] = color
+            
+            # Áp dụng mask màu lên overlay
+            overlay[binary_mask == 1] = colored_mask[binary_mask == 1]
+            
+            # 2. Vẽ bounding box (tùy chọn, có thể bỏ nếu không cần)
             x1, y1, x2, y2 = map(int, box)
+            cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
             
-            # Draw bounding box
-            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-            
-            # Create label with class name and confidence
+            # 3. Vẽ nhãn
             label = f"{class_names[cls_id]} {conf:.2f}"
-            
-            # Draw label background
             (label_width, label_height), _ = cv2.getTextSize(
                 label, cv2.FONT_HERSHEY_SIMPLEX, 0.6, 1)
+            
+            # Vẽ nền nhãn
             cv2.rectangle(
                 frame, 
                 (x1, y1 - label_height - 10),
                 (x1 + label_width, y1),
-                (0, 255, 0),
+                color,
                 -1
             )
             
-            # Draw label text
+            # Vẽ text
             cv2.putText(
                 frame, 
                 label, 
@@ -603,4 +660,21 @@ class VideoDetectView(APIView):
                 1
             )
         
+        # Trộn overlay với frame gốc
+        frame = cv2.addWeighted(overlay, alpha, frame, 1 - alpha, 0)
+        
         return frame
+
+    # Hàm hỗ trợ tạo màu theo class_id
+    def generate_color(self, class_id):
+        if not hasattr(self, 'color_cache'):
+            self.color_cache = {}
+            
+        if class_id not in self.color_cache:
+            # Tạo màu ngẫu nhiên nhưng giữ nguyên giữa các lần gọi
+            self.color_cache[class_id] = (
+                random.randint(0, 255),
+                random.randint(0, 255),
+                random.randint(0, 255)
+            )
+        return self.color_cache[class_id]
