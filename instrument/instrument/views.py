@@ -287,6 +287,7 @@ from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from langchain_community.vectorstores import FAISS
 from dotenv import load_dotenv
+import openai
 
 load_dotenv()  # Đọc file .env
 # Thiết lập API key cho OpenAI
@@ -392,7 +393,8 @@ from ultralytics import YOLO
 from moviepy import VideoFileClip, AudioFileClip
 import moviepy    
 import subprocess as sp
-
+from openai import OpenAI
+import uuid
 
 class VideoDetectView(APIView):
 
@@ -436,16 +438,22 @@ class VideoDetectView(APIView):
         
         # Sử dụng video đã có âm thanh
         video_url = request.build_absolute_uri(f'/static/predict/{os.path.basename(final_output_path)}')
+
+        generate_music_description1 = self.generate_music_description(time_detections)
+        print(f"Generated music description: {generate_music_description1}")
         return Response({
             'video_url': video_url,
-            'time_detections': time_detections
+            'time_detections': time_detections,
+            'music_description': generate_music_description1
         })
 
     def add_audio_to_video(self, original_video_path, processed_video_path):
         """Thêm âm thanh từ video gốc vào video đã xử lý"""
         try:
             # Tạo tên file mới cho video có âm thanh
-            final_path = processed_video_path.replace('.mp4', '_with_audio.mp4')
+            # final_path = processed_video_path.replace('.mp4', '_with_audio.mp4')
+            unique_id = uuid.uuid4().hex
+            final_path = processed_video_path.replace('.mp4', f'_{unique_id}_with_audio.mp4')
             
             # Lấy âm thanh từ video gốc
             audio_clip = AudioFileClip(original_video_path)
@@ -480,7 +488,9 @@ class VideoDetectView(APIView):
     def process_video(self, input_path, interval):
         """Process video frame-by-frame with YOLO detection and collect time-based results"""
         os.makedirs('instrument/static/predict', exist_ok=True)
-        output_path = 'instrument/static/predict/output_video.mp4'
+        # output_path = 'instrument/static/predict/output_video.mp4'
+        unique_id = uuid.uuid4().hex
+        output_path = f'instrument/static/predict/output_video_{unique_id}.mp4'
         
         # Load YOLO model
         with self.disable_weights_only():
@@ -678,3 +688,67 @@ class VideoDetectView(APIView):
                 random.randint(0, 255)
             )
         return self.color_cache[class_id]
+
+    def generate_music_description(self, time_detections):
+        nhac_cu_dt = {
+            'cong_chieng': 'cồng_chiêng',
+            'dan_bau': 'đàn_bầu',
+            'dan_co': 'đàn_cò',
+            'dan_da': 'đàn_đá',
+            'dan_day': 'đàn_đáy',
+            'dan_nguyet': 'đàn_nguyệt',
+            'dan_sen': 'đàn_sến',
+            'dan_t_rung': 'đàn_t_rưng',
+            'dan_tinh': 'đàn_tính',
+            'dan_tranh': 'đàn_tranh',
+            'dan_ty_ba': 'đàn_tỳ_bà',
+            'guitar': 'guitar',
+            'khen': 'khèn',
+            'trong_quan': 'trống_quân'
+        }
+        """Tạo mô tả âm nhạc bằng LLM dựa trên nhạc cụ phát hiện"""
+        load_dotenv()  # Đọc file .env
+        # Lấy API key từ biến môi trường
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            raise ValueError("Không tìm thấy OPENAI_API_KEY trong .env")
+
+        client = OpenAI(api_key=api_key)
+
+        if not time_detections:
+            return "Không phát hiện nhạc cụ nào trong video"
+        
+        lines = ["Tôi có dữ liệu các nhạc cụ xuất hiện trong video theo thời gian:"]
+        for entry in time_detections:
+            t = entry['time_second']
+            # instrs = entry['detected_instruments']
+             # Thay instrs cũ bằng mapping có dấu
+            raw_instrs = entry['detected_instruments']
+            instrs = [nhac_cu_dt.get(code, code) for code in raw_instrs]
+                
+            if len(instrs) == 1:
+                instr_text = instrs[0]
+            elif len(instrs) == 2:
+                instr_text = f"{instrs[0]} và {instrs[1]}"
+            else:
+                instr_text = ', '.join(instrs[:-1]) + ' và ' + instrs[-1]
+                
+            lines.append(f"- Tại giây {t}: {instr_text}")
+
+        lines.append("Hãy tạo một đoạn mô tả ngắn (3-5 câu) về loại hình âm nhạc trong video này dựa trên các nhạc cụ xuất hiện.")
+        prompt = "\n".join(lines)
+
+        try:
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": "Bạn là chuyên gia âm nhạc."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.7,
+                max_tokens=500
+            )
+            return response.choices[0].message.content.strip()
+        except Exception as e:
+            print(f"LLM error: {e}")
+            return "Không thể tạo mô tả âm nhạc"

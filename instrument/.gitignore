@@ -31,3 +31,6 @@ coverage
 *.venv/
 *.env
 .env
+/instrument/static/
+/media
+/static

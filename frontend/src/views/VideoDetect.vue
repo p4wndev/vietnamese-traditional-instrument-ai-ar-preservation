@@ -20,12 +20,17 @@
     <div v-if="results.length" class="mt-6 w-full">
       <h3 class="text-lg font-semibold mb-2 text-left mt-2">Detection Results</h3>
       <video :src="videoOutputUrl" controls class="video-preview" ref="videoPlayer"></video>
-      <ul class="results-container">
+      <ul class="results-container mt-2">
         <li v-for="item in results" :key="item.time_second" class="result-item">
           <span class="font-medium">Giây thứ {{ item.time_second }}:</span>
           {{ formatInstruments(item.detected_instruments) }}
         </li>
       </ul>
+      <div class="mt-2">
+        <h3 class="text-lg font-semibold mb-2">Music Description</h3>
+        <p v-if="music_description">{{ music_description }}</p>
+        <p v-else>No description available.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -40,6 +45,7 @@ export default {
       videoUrl: null,
       results: [],
       videoOutputUrl: null,
+      music_description: null,
     }
   },
   methods: {
@@ -88,6 +94,7 @@ export default {
         const response = await VideoDetectService.videoDetect(form)
         this.results = response.data.time_detections;
         this.videoOutputUrl = response.data.video_url;
+        this.music_description = response.data.music_description;
       } catch (error) {
         console.error(error)
         alert('Upload or detection failed.')
