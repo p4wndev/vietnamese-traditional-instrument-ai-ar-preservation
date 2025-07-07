@@ -395,6 +395,8 @@ import moviepy
 import subprocess as sp
 from openai import OpenAI
 import uuid
+from pymongo import MongoClient
+import datetime
 
 class VideoDetectView(APIView):
 
@@ -438,13 +440,43 @@ class VideoDetectView(APIView):
         
         # Sử dụng video đã có âm thanh
         video_url = request.build_absolute_uri(f'/static/predict/{os.path.basename(final_output_path)}')
+        generate_music_description = self.generate_music_description(time_detections)
+        print(f"Generated music description: {generate_music_description}")
 
-        generate_music_description1 = self.generate_music_description(time_detections)
-        print(f"Generated music description: {generate_music_description1}")
+        # ===== PHẦN LƯU VÀO MONGODB =====
+        try:
+            # Kết nối MongoDB
+            mongodb_uri = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
+            client = MongoClient(mongodb_uri)
+            db = client['instrument_detection_db']
+            collection = db['video_detection_results']
+            
+            # Chuẩn bị document để lưu
+            video_document = {
+                "video_url": video_url,
+                "local_video_path": final_output_path,
+                "processing_date": datetime.datetime.now(),
+                "time_detections": time_detections,
+                "music_description": generate_music_description,
+            }
+            
+            # Chèn dữ liệu vào MongoDB
+            result = collection.insert_one(video_document)
+            print(f"Saved to MongoDB with ID: {result.inserted_id}")
+            
+            # Cập nhật thêm trường ID vào response
+            video_document['_id'] = str(result.inserted_id)
+        except Exception as e:
+            print(f"MongoDB save error: {e}")
+        finally:
+            if 'client' in locals():
+                client.close()
+        # ===== END PHẦN LƯU VÀO MONGODB =====
+
         return Response({
             'video_url': video_url,
             'time_detections': time_detections,
-            'music_description': generate_music_description1
+            'music_description': generate_music_description
         })
 
     def add_audio_to_video(self, original_video_path, processed_video_path):
