@@ -397,6 +397,7 @@ from openai import OpenAI
 import uuid
 from pymongo import MongoClient
 import datetime
+from collections import Counter
 
 class VideoDetectView(APIView):
 
@@ -472,11 +473,12 @@ class VideoDetectView(APIView):
             if 'client' in locals():
                 client.close()
         # ===== END PHẦN LƯU VÀO MONGODB =====
-
+        similar_videos = self.find_similar_videos(time_detections)
         return Response({
             'video_url': video_url,
             'time_detections': time_detections,
-            'music_description': generate_music_description
+            'music_description': generate_music_description,
+            'similar_videos': similar_videos
         })
 
     def add_audio_to_video(self, original_video_path, processed_video_path):
@@ -784,3 +786,68 @@ class VideoDetectView(APIView):
         except Exception as e:
             print(f"LLM error: {e}")
             return "Không thể tạo mô tả âm nhạc"
+        
+    def find_similar_videos(self, current_detections, collection_name="video_detection_results", limit=3):
+        
+        try:
+            # Kết nối MongoDB
+            mongodb_uri = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
+            client = MongoClient(mongodb_uri)
+            db = client['instrument_detection_db']
+            collection = db[collection_name]
+            
+            # Bước 1: Tạo tập hợp nhạc cụ duy nhất từ video hiện tại
+            current_instruments = set()
+            for detection in current_detections:
+                current_instruments.update(detection['detected_instruments'])
+            
+            # Bước 2: Truy vấn tất cả video trong database
+            all_videos = list(collection.find({}, {
+                "_id": 1,
+                "video_url": 1,
+                "time_detections": 1,
+                "music_description": 1
+            }))
+            
+            # Bước 3: Tính điểm tương đồng cho mỗi video
+            video_scores = []
+            for video in all_videos:
+                # Tạo tập hợp nhạc cụ của video trong database
+                db_instruments = set()
+                for detection in video['time_detections']:
+                    db_instruments.update(detection['detected_instruments'])
+                
+                # Tính điểm tương đồng (Jaccard similarity)
+                intersection = current_instruments & db_instruments
+                union = current_instruments | db_instruments
+                similarity = len(intersection) / len(union) if union else 0
+                
+                video_scores.append({
+                    "video": video,
+                    "similarity": similarity,
+                    "common_instruments": list(intersection), #Nhạc cụ mà chung video hiện tại và video trong database có chung
+                    "all_instruments": list(db_instruments)
+                })
+
+            
+            # Bước 4: Sắp xếp theo điểm tương đồng giảm dần
+            video_scores.sort(key=lambda x: x['similarity'], reverse=True)
+            
+            # Bước 5: Lấy top kết quả (loại bỏ video hiện tại nếu có)
+            top_results = []
+            for result in video_scores:
+                # Kiểm tra nếu không phải video hiện tại
+                if result['similarity'] > 0 and len(top_results) < limit:
+                    # Format lại dữ liệu
+                    result['video']['_id'] = str(result['video']['_id'])
+                    # result.pop('video', None) 
+                    top_results.append(result)
+            
+            return top_results
+            
+        except Exception as e:
+            print(f"Error finding similar videos: {e}")
+            return []
+        finally:
+            if 'client' in locals():
+                client.close()

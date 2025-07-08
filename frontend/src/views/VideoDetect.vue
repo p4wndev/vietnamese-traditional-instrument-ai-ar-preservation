@@ -31,6 +31,36 @@
         <p v-if="music_description">{{ music_description }}</p>
         <p v-else>No description available.</p>
       </div>
+
+      <!-- similar_videos -->
+      <h3 class="text-lg font-semibold mb-2 text-left mt-2">Videos featuring similar types of instrument</h3>
+      <div class="similar-video">
+        <div v-for="(video, videoIndex) in similar_videos" :key="videoIndex" class="similar-video-item">
+          <!-- Hiển thị video đầu tiên -->
+
+          <div class="video-container">
+            <video :src="video.video.video_url" controls class="video-preview" ref="videoPlayer"></video>
+          </div>
+
+          <!-- Nút điều khiển hiển thị -->
+          <div @click="toggleDetails(videoIndex)" class="toggle-button">
+            {{ showDetails[videoIndex] ? 'Thu nhỏ' : 'Xem thêm' }}
+          </div>
+
+          <!-- Phần thông tin chi tiết -->
+          <div class="related-infor" v-show="showDetails[videoIndex]">
+            <p><b>Detection Results</b></p>
+            <ul class="results-container mt-2">
+              <li v-for="item in video.video.time_detections" :key="item.time_second" class="result-item">
+                <span class="font-medium">Giây thứ {{ item.time_second }}:</span>
+                {{ formatInstruments(item.detected_instruments) }}
+              </li>
+            </ul>
+            <p><b>Music Description</b></p>
+            <div class="video-infor">{{ video.video.music_description }}</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -46,6 +76,18 @@ export default {
       results: [],
       videoOutputUrl: null,
       music_description: null,
+      similar_videos: [],
+      showDetails: [] // Mảng lưu trạng thái show/hidden của từng video
+    }
+  },
+  created() {
+    // Khởi tạo trạng thái khi component được tạo
+    this.initializeShowDetails();
+  },
+  watch: {
+    // Theo dõi thay đổi của similar_videos
+    similar_videos() {
+      this.initializeShowDetails();
     }
   },
   methods: {
@@ -68,6 +110,21 @@ export default {
       };
 
       return instruments.map(instr => instrumentNames[instr] || instr).join(', ');
+    },
+    // Khởi tạo mảng trạng thái
+    initializeShowDetails() {
+      this.showDetails = this.similar_videos.map(() => false);
+    },
+
+    // Chuyển đổi trạng thái hiển thị
+    toggleDetails(index) {
+      const newShowDetails = [...this.showDetails];
+      // Đóng tất cả các mục khác trước khi mở mục hiện tại
+      if (!newShowDetails[index]) {
+        newShowDetails.fill(false);
+      }
+      newShowDetails[index] = !newShowDetails[index];
+      this.showDetails = newShowDetails;
     },
     onFileChange(event) {
       // Xóa URL cũ nếu có
@@ -95,6 +152,7 @@ export default {
         this.results = response.data.time_detections;
         this.videoOutputUrl = response.data.video_url;
         this.music_description = response.data.music_description;
+        this.similar_videos = response.data.similar_videos;
       } catch (error) {
         console.error(error)
         alert('Upload or detection failed.')
@@ -161,5 +219,49 @@ export default {
   width: 100%;
   max-width: 800px;
   /* Giống với video preview */
+}
+
+.similar-video {
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr); */
+  display: flex;
+  gap: 16px;
+}
+
+.similar-video-item {
+  background-color: #f0f0f0;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 200px;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+
+/* ======================================== */
+.toggle-button {
+  cursor: pointer;
+  color: #3498db;
+  font-weight: 500;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.toggle-button:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.related-infor {
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
 }
 </style>
