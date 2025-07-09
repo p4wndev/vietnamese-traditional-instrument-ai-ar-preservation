@@ -463,17 +463,18 @@ class VideoDetectView(APIView):
             
             # Chèn dữ liệu vào MongoDB
             result = collection.insert_one(video_document)
-            print(f"Saved to MongoDB with ID: {result.inserted_id}")
+            inserted_id = result.inserted_id
+            print(f"Saved to MongoDB with ID: {inserted_id}")
             
             # Cập nhật thêm trường ID vào response
-            video_document['_id'] = str(result.inserted_id)
+            video_document['_id'] = str(inserted_id)
         except Exception as e:
             print(f"MongoDB save error: {e}")
         finally:
             if 'client' in locals():
                 client.close()
         # ===== END PHẦN LƯU VÀO MONGODB =====
-        similar_videos = self.find_similar_videos(time_detections)
+        similar_videos = self.find_similar_videos(time_detections, inserted_id)
         return Response({
             'video_url': video_url,
             'time_detections': time_detections,
@@ -787,7 +788,7 @@ class VideoDetectView(APIView):
             print(f"LLM error: {e}")
             return "Không thể tạo mô tả âm nhạc"
         
-    def find_similar_videos(self, current_detections, collection_name="video_detection_results", limit=3):
+    def find_similar_videos(self, current_detections, video_id, collection_name="video_detection_results", limit=3):
         
         try:
             # Kết nối MongoDB
@@ -837,7 +838,7 @@ class VideoDetectView(APIView):
             top_results = []
             for result in video_scores:
                 # Kiểm tra nếu không phải video hiện tại
-                if result['similarity'] > 0 and len(top_results) < limit:
+                if result['similarity'] > 0 and len(top_results) < limit and str(result['video']['_id']) != str(video_id):
                     # Format lại dữ liệu
                     result['video']['_id'] = str(result['video']['_id'])
                     # result.pop('video', None) 

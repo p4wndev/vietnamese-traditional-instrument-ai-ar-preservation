@@ -222,10 +222,9 @@ export default {
 }
 
 .similar-video {
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr); */
   display: flex;
-  gap: 16px;
+  gap: 5px;
+  align-items: flex-start; /* cho items bắt đầu từ trên cùng */
 }
 
 .similar-video-item {
@@ -233,7 +232,12 @@ export default {
   padding: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  min-width: 200px;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  /* cho phép auto chiều cao */
+  height: auto !important;
+  align-self: flex-start; /* tự co dãn theo nội dung */
 }
 
 .video-container {
