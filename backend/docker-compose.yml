@@ -1,0 +1,76 @@
+version: "3.9"
+
+services:
+  # ── FastAPI backend ──────────────────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vitip_api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/
+    volumes:
+      # Mount your trained model files into the container
+      - ./models:/app/models:ro
+      # Persist static output (processed images/videos)
+      - vitip_static:/app/static
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - vitip_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # ── MongoDB ──────────────────────────────────────────────────────────────────
+  mongo:
+    image: mongo:7.0
+    container_name: vitip_mongo
+    restart: unless-stopped
+    volumes:
+      - vitip_mongo_data:/data/db
+    networks:
+      - vitip_net
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ── Nginx reverse proxy (optional but recommended) ───────────────────────────
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: vitip_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - vitip_static:/app/static:ro
+      # Uncomment for SSL certificates (e.g., Let's Encrypt)
+      # - /etc/letsencrypt:/etc/letsencrypt:ro
+    depends_on:
+      - api
+    networks:
+      - vitip_net
+
+
+volumes:
+  vitip_static:
+  vitip_mongo_data:
+
+
+networks:
+  vitip_net:
+    driver: bridge

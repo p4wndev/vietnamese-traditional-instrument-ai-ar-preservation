@@ -88,7 +88,7 @@ export default {
             formData.append('image_input', this.selectedFile);
             try {
                 const response = await PredictService.uploadImage(formData);
-                this.instruments = [...new Set(response.data.cl_o)];
+                this.instruments = [...new Set(response.data.classifications)];
             } catch (error) {
                 this.error = 'Failed to upload image or load instruments';
                 console.error(error);

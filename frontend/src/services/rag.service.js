@@ -1,14 +1,14 @@
 import createApiClient from "./api.rag.service";
 
 class RagService {
-    constructor(baseUrl = "/api/chatbot/rag/") {
+    constructor(baseUrl = import.meta.env.VITE_API_URL
+        ? `${import.meta.env.VITE_API_URL}/api`
+        : "/api") {
         this.api = createApiClient(baseUrl);
     }
     async ragAnswer(question) {
-        console.log("ragAnswer called with question:", question);
-        const respone = await this.api.post("/", { question });
-        console.log(respone.data);
-        return respone.data;
+        const response = await this.api.post("/chatbot/rag", { question });
+        return response.data;
     }
 }
 export default new RagService();
